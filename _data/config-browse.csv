@@ -1,0 +1,6 @@
+field,display_name,btn,hidden,sort_name
+ware,Ware,,,Ware
+shape,Shape,,,Shape
+period,Period,,,Period
+context,Context,,,Context
+identifier,,,true,Identifier
