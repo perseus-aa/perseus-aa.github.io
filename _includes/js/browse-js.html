@@ -39,7 +39,9 @@ function makeCard(obj) {
     var imgAlt = obj.alt ? obj.alt : obj.title;
 
     // start card
-    var card = '<div class="item col-lg-4 col-md-6 mb-2"><div class="card">';
+    // var card = '<div class="item col-lg-4 col-md-6 mb-2"><div class="card">';
+    var card = '<div class="item col-lg-4 col-md-6 mb-2"><div class="card h-100">';
+
     // top image for items with image
     if(imgSrc) {
         card += '<a href="' + itemHref + '"> <img class="card-img-top lazyload" src="' + placeholder + '" data-src="' + imgSrc + '" alt="' + imgAlt + '"></a>';
