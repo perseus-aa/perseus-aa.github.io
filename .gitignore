@@ -18,5 +18,9 @@ Gemfile.lock
 # if you would like to commit your objects to github, delete the line below!
 objects/
 
+# ignore _site directory (it is rebuilt)
+_site/
+
 *.*~
 *.bak
+.dir-locals.el
