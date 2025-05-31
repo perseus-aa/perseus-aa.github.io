@@ -8,7 +8,7 @@
 #
 # featured image is used in home page banner and in meta markup to represent the collection
 # use either an objectid (from an item in this collect), a relative location of an image in this repo, or a full url to an image elsewhere
-featured-image: https://iiif.perseus.tufts.edu/iiif/3/1990.05.0140/full/pct:50/0/default.png
+featured-image: https://iiif.perseus.tufts.edu/iiif/3/1991.04.0125/full/max/0/default.png
 # optional: add extra padding around collection title for a larger image feature. 
 home-title-y-padding: 12em # the margin from the top your title portion will appear.
 # optional: change position of background image, center, top, bottom
@@ -74,7 +74,7 @@ metadata-facets-fields: "subject,creator,format"
 map-child-objects: true # true / false - if true, and if child item has latitude and longitude, child objects will be displayed on map
 timeline-child-objects: true # true / false - if true, and if child object has date, child objects will appear as thumbnails on timeline page
 data-child-objects: false # true / false - if true, child objects will appear linked in table on data page
-browse-child-objects: false # true / false - if true, child objects will appear on browse page and child objects' metadata will populate cloud pages like Subjects page and Locations page, as well as featured terms boxes on the home page
+browse-child-objects: true # true / false - if true, child objects will appear on browse page and child objects' metadata will populate cloud pages like Subjects page and Locations page, as well as featured terms boxes on the home page
 search-child-objects: true # true / false - if true, child objects will appear on on search page along with parent objects
 
 
