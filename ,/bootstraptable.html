@@ -1,0 +1,18 @@
+---
+layout: page
+---
+{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid and item.objtype == page.objtype' -%}
+
+
+<table class="table">
+<thead>
+	<th>Name</th>
+	<th>Thumbnail</th>
+</thead>
+{% for item in items %}
+<tr>
+  <td>{{ item.title }}a</td>
+  <td><img src="{{ item.image_thumb }}"/></td>
+</tr>
+{% endfor %}
+</table>

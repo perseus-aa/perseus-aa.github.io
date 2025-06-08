@@ -1,0 +1,13 @@
+field,display_name,btn,hidden,sort_name,facet_name
+objtype,Type of Object,false,true,object type,object type
+building_type,Type of Building,false,true,,building type
+ceramic_phase,ceramic_phase,false,true,ceramic_phase,ceramic phase
+period,period,false,true,period,period
+periods,periods,false,true,periods,periods
+region,region,false,false,region,region
+sculpture_type,sculpture_type,false,true,sculpture_type,sculpture type
+shape,shape,false,true,shape,shape
+site_type,site_type,false,true,site_type,site type
+style,style,false,true,style,style
+technique,technique,false,true,technique,technique
+ware,ware,false,true,ware,ware

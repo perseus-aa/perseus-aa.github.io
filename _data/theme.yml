@@ -1,0 +1,104 @@
+##########
+# CollectionBuilder Theme Customization
+# values set here help configure details of individual pages in the website
+##########
+
+##########
+# HOME PAGE
+#
+featured-image: https://iiif.perseus.tufts.edu/iiif/3/1991.04.0125/full/max/0/default.png
+home-title-y-padding: 10em # the margin from the top your title portion will appear.
+home-banner-image-position: center # Default is top
+
+
+##########
+# Browse PAGE
+#
+# see _data/browse-config.csv to define the metadata fields that will display.
+advanced-search: true
+faceted-search: true 
+default-sort-field: objtype 
+
+
+##########
+# ITEM PAGE
+#
+# see _data/metadata-config.csv to define the metadata fields that will display.
+browse-buttons: false # true / false, adds previous/next arrows to items, but increases build time
+
+##########
+# SUBJECTS PAGE
+#
+subjects-fields: objtype;building_type;ware;period;
+subjects-min: 2
+subjects-stopwords: Perseus;perseus
+
+##########
+# LOCATIONS PAGE
+#
+locations-fields: context;region;site
+locations-min: 1
+locations-stopwords:
+
+##########
+# MAP PAGE
+#
+# see _data/map-config.csv for field display options
+auto-center-map: true # have the map auto fit all features into its view
+latitude: 46.727485 # to manually center map if not using auto-center-map option
+longitude: -117.014185 # to manually center map if not using auto-center-map option
+zoom-level: 5 # zoom level for map if not using auto-center-map option
+map-base: Esri_WorldStreetMap # set default base map, choose from: Esri_WorldStreetMap, Esri_NatGeoWorldMap, Esri_WorldImagery, OpenStreetMap_Mapnik
+map-search: true # not suggested with large collections
+map-search-fuzziness: 0.35 # fuzzy search range from 1 = anything to 0 = exact match only
+map-cluster: true # suggested for large collection or with many items in same location
+map-cluster-radius: 25 # size of clusters, from ~ 10 to 80
+
+##########
+# TIMELINE PAGE
+#
+# set either year-navigation or year-nav-increment to generate a year nav dropdown
+year-navigation: #"1900;1905;1910;1915;1920" # manually set years to appear in dropdown nav
+year-nav-increment: 5 # set increments to auto gen nav years
+
+##########
+# DATA 
+# 
+metadata-export-fields: id,objectid,parentid,objtype,title,display_template,format,type,object_location,image_small,image_thumb,credits,caption,represents,uri,accession_number,actual_weight,architect,architect_evidence,architectural_order,assoc_building,attributed_by,beazley_number,building_type,category,ceramic_phase,collection,collection_history,commentary,comparanda,condit,condition_description,context,context_mod,culture,date_description,date_for_sort,decoration_description,denomination,description,die_axis,dimensions,documentary_references,donor,end_date,end_mod,entered_by,essay_number,essay_text,exploration,extent,findspot,findspot_mod,form_style_description,graffiti,history,human_name,image,images,in_group,in_whole,inscription,inscription_bibliography,inscriptions,issuing_authority,location,material,material_description,name,object_function,obverse_legend,obverse_type,original,original_or_copy,other_bibliography,other_notes,painter,painter_mod,period,period_for_sort,periods,perseus_version,physical,placement,plan,potter,potter_mod,primary_citation,region,relief,reverse_legend,reverse_type,scale,scale_for_sort,sculptor,sculptor_mod,sculpture_type,see_also,shape,shape_description,site_type,sources_used,start_date,start_mod,style,subject_description,summary,technique,technique_description,unitary_date,unitary_mod,ware
+# generate a facets list for given fields, comma delimited
+metadata-facets-fields: "objtype,ware,period,region,context"
+
+##########
+# Compound Objects 
+# 
+map-child-objects: true 
+timeline-child-objects: true 
+data-child-objects: true 
+browse-child-objects: true
+search-child-objects: true
+
+
+##########
+# ADVANCED OPTIONS
+#
+
+# NAVBAR COLORS [optional!]
+# navbar text color
+# Choose from "navbar-light" for use with light background colors, or "navbar-dark" for dark background colors
+navbar-color: navbar-dark
+# navbar background color
+# Choose from bg-primary, bg-secondary, bg-success, bg-danger, bg-warning, bg-info, bg-light, bg-dark, bg-white
+navbar-background: bg-dark
+
+# BOOTSWATCH THEMES [optional!]
+# You can replace the standard Bootstrap theme with a Bootswatch (https://github.com/thomaspark/bootswatch) option
+# Choose from: cerulean; cosmo; cyborg; darkly; flatly; journal; litera; lumen; lux; materia; minty; pulse; sandstone; simplex; sketchy; slate; solar; spacelab; superhero; united; yeti 
+bootswatch: # leave blank or comment out for plain bootstrap
+
+# THEME FONTS [optional!]
+base-font-size: 1.2em
+text-color: "#191919"
+link-color: "#0d6efd"
+base-font-family: # comment out for bootstrap defaults. e.g. Roboto
+font-cdn: # add font stylesheet, e.g. <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
