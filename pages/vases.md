@@ -1,6 +1,6 @@
 ---
 title: Vases
-layout: bootstraptable
+layout: browse
 permalink: /vases.html
 objtype: Vase
 regenerate: true

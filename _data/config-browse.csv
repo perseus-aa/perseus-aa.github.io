@@ -1,12 +1,20 @@
 field,display_name,btn,hidden,sort_name,facet_name
 objtype,Type of Object,false,true,object type,object type
+context,Context,false,true,context,context
+collection,Collection,false,false,collection,
+caption,Caption,false,false,caption
 building_type,Type of Building,false,true,,building type
 ceramic_phase,ceramic_phase,false,true,ceramic_phase,ceramic phase
+material,material,false,true,material,material
+object_function,object_function,false,true,object_function,object function
+painter,painter,false,true,painter,painter
 period,period,false,true,period,period
 periods,periods,false,true,periods,periods
 region,region,false,false,region,region
+sculptor,sculptor,false,true,sculptor,sculptor
 sculpture_type,sculpture_type,false,true,sculpture_type,sculpture type
 shape,shape,false,true,shape,shape
+site,site,false,true,site,site
 site_type,site_type,false,true,site_type,site type
 style,style,false,true,style,style
 technique,technique,false,true,technique,technique

@@ -29,7 +29,7 @@ browse-buttons: false # true / false, adds previous/next arrows to items, but in
 ##########
 # SUBJECTS PAGE
 #
-subjects-fields: objtype;building_type;ware;period;
+subjects-fields: building_type;ceramic_phase;material;object_function;painter;period;periods;sculptor;shape;sculpture_type;site_type;style;technique;ware;
 subjects-min: 2
 subjects-stopwords: Perseus;perseus
 
