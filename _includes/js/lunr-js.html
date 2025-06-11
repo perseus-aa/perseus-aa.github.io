@@ -48,6 +48,7 @@
               input.value = query;
               lunr_search();
 	  }
+
       }
   });
   
@@ -92,8 +93,10 @@
 	  fieldsToDisplay.forEach(field => {
 	      const cell = document.createElement('td');
 	      const value = doc[field];
+	      const cleanId = doc.id.replace(/\.html$/, '');
+	      debugger;
 	      if (field === 'id' && value) {
-		  cell.innerHTML = `<a href="${value}">${value}</a>`;
+		  cell.innerHTML = `<a href="{{"/items/" | relative_url }}${value}">${cleanId}</a>`;
 	      } else {
 		  cell.textContent = value || '';
 	      }
