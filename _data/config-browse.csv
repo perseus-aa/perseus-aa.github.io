@@ -1,4 +1,5 @@
 field,display_name,btn,hidden,sort_name,facet_name
+title,Title,false,true,title,title
 objtype,Type of Object,false,true,object type,object type
 context,Context,false,true,context,context
 collection,Collection,false,false,collection,

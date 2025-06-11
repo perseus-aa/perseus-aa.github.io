@@ -3,73 +3,103 @@
 <script src="{{ '/assets/lib/lunr.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/lunr-store.js' | relative_url }}"></script>
 <script>
-/* initialize lunr */
-var idx = lunr(function () {
-  /* add index fields from config */
-  this.ref('id')
-  {% for f in index_fields %}
-  this.field({{ f.field | jsonify }})
-  {% endfor %}
+  const fields = [
+    'title', 'caption', 'summary', 'context',
+    'name', 'period', 'region', 'building_type', 'objtype', 'id'
+  ];
 
-  //this.pipeline.remove(lunr.trimmer)
+  let idx;
 
-  for (var item in store) {
-    this.add({
-      {% for f in index_fields %}
-      {{ f.field | jsonify }}: store[item][{{ f.field | jsonify }}],
-      {% endfor %}
-      id: item
-    })
+  // Utility: Get ?q=... from URL
+  function getQueryParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name) || '';
   }
 
-});
+  // Build and search after DOM loads
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM loaded");
 
-/* search function */
-function lunr_search () {
-  var resultdiv = document.querySelector('#lunrResults');
-  var query = document.querySelector('#lunrSearchBox').value;//.toLowerCase();
-  /* basic search that supports operators */
-  var result = idx.search(query); 
-  /* more fuzzy search, but doesn't support operators:
-  var result =
-    idx.query(function (q) {
-      query.split(lunr.tokenizer.separator).forEach(function (term) {
-        q.term(term, { boost: 100 })
-        if(query.lastIndexOf(" ") != query.length-1){
-          q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
-        }
-        if (term != ""){
-          q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
-        }
-      })
-    });*/
-  resultdiv.innerHTML = "";
-  var newresults = '<tr><td><h4 class="mt-3">' + result.length + ' Result(s) found</h4></td></tr>';
-  for (var item in result) {
-    var ref = result[item].ref;
-    var searchitem =
-      '<tr>'+
-          '<td>' +
-            {% assign display = fields | where: 'display','true' %}
-            {% for d in display %}
-            {% if forloop.first %}
-            '<p class="h4"><a href="{{ "/items/" | relative_url }}' + store[ref].id + '">' + store[ref][{{ fields[0].field | jsonify }}]  + '</a></p>' +
-            '<p class="ms-3">';
-              {% else %}
-              if(store[ref][{{ d.field | jsonify }}]) {
-                searchitem += store[ref][{{ d.field | jsonify }}] + '<br> '; }
-              {% endif %}{% endfor %}
-              searchitem += '</p></td>' +
-      '</tr>';
-    newresults += searchitem;
+    // Build the Lunr index
+    idx = lunr(function () {
+      this.ref('id');
+      fields.forEach(f => this.field(f));
+      store.forEach(doc => this.add(doc));
+    });
+
+    console.log("Lunr index built");
+
+    // Hook up form submission
+    const form = document.getElementById('lunrSearch');
+    if (form) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        lunr_search();
+      });
+    }
+
+    // Check if there's a query string ?q=
+    const query = getQueryParam('q');
+    if (query) {
+      const input = document.getElementById('lunrSearchBox');
+      if (input) {
+        input.value = query;
+        lunr_search();
+      }
+    }
+  });
+
+  // Main search function
+  function lunr_search() {
+    const query = document.getElementById('lunrSearchBox').value.trim();
+    console.log("Search query:", query);
+
+    const table = document.getElementById('lunrResults');
+    if (!query || !idx) {
+      table.innerHTML = '';
+      return;
+    }
+
+    const results = idx.search(query);
+    console.log("Search results:", results);
+
+    renderTable(results);
   }
-  resultdiv.innerHTML = newresults;
-}
 
-/* init search box and get query string */
-if (window.location.search) {
-  var queryString = decodeURIComponent(window.location.search.substring(1).split("=")[1]);
-  document.querySelector('#lunrSearchBox').value = queryString;
-  lunr_search();
-}
+  // Render results into the table
+  function renderTable(results) {
+    const table = document.getElementById('lunrResults');
+    table.innerHTML = '';
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    fields.forEach(field => {
+      const th = document.createElement('th');
+      th.textContent = field;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    results.forEach(result => {
+      const doc = store.find(d => d.id === result.ref);
+      if (!doc) return;
+
+      const row = document.createElement('tr');
+      fields.forEach(field => {
+        const cell = document.createElement('td');
+        const value = doc[field];
+        if (field === 'id' && value) {
+          cell.innerHTML = `<a href="${value}">${value}</a>`;
+        } else {
+          cell.textContent = value || '';
+        }
+        row.appendChild(cell);
+      });
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+  }
 </script>
