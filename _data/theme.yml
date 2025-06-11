@@ -30,14 +30,14 @@ browse-buttons: false # true / false, adds previous/next arrows to items, but in
 # SUBJECTS PAGE
 #
 subjects-fields: building_type;ceramic_phase;material;object_function;painter;period;periods;sculptor;shape;sculpture_type;site_type;style;technique;ware;
-subjects-min: 2
+subjects-min: 20
 subjects-stopwords: Perseus;perseus
 
 ##########
 # LOCATIONS PAGE
 #
 locations-fields: context;region;site
-locations-min: 1
+locations-min: 20
 locations-stopwords:
 
 ##########
