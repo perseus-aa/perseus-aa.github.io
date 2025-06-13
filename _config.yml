@@ -8,7 +8,7 @@
 # URL VARIABLES
 #
 # site domain, full URL to the production location of your collection
-url: 
+url: https://perseus-aa.github.io/
 # path to location on the domain if necessary e.g. /digital/hjccc
 baseurl: 
 # location of code, the full url to your github repository
@@ -20,12 +20,12 @@ source-code: https://github.com/perseus-aa/perseus-aa.github.io
 # title of site appears in banner
 title: Perseus Art and Archaeology Browser
 # tagline, a short phrase that will appear throughout the site in the top banner
-tagline: Work in Progress
+tagline: The Material Ancient World
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Work in Progress"
+description: "Images of sites, buildings, and artifacts from the ancient Mediterranean"
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
-keywords: classics;greece;rome
+keywords: Perseus;art;archaeology;buildings;coins;gems;sculptures;sites;vases;classics;greece;rome
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
 author: cwulfman
 
