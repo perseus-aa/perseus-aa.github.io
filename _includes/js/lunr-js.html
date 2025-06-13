@@ -9,9 +9,12 @@
   }
 
 
-  const fieldsToIndex = config.filter(f => f.index === 'true').map(f => f.field);
+  console.log("config:", config)
+
+  const fieldsToIndex = config.filter(f => f.index === "true").map(f => f.field);
+
   console.log("fieldsToIndex:", fieldsToIndex);
-  const fieldsToDisplay = config.filter(f => f.display === 'true').map(f => f.field);
+  const fieldsToDisplay = config.filter(f => f.display === "true").map(f => f.field);
   console.log("fieldsToDisplay:", fieldsToDisplay);
 
   
@@ -94,10 +97,13 @@
 	      const cell = document.createElement('td');
 	      const value = doc[field];
 	      const cleanId = doc.id.replace(/\.html$/, '');
-	      debugger;
 	      if (field === 'id' && value) {
 		  cell.innerHTML = `<a href="{{"/items/" | relative_url }}${value}">${cleanId}</a>`;
-	      } else {
+	      } else if (field === 'image_thumb' && value) {
+		  const id = doc.id
+		  cell.innerHTML = `<a href="{{"/items/" | relative_url }}${id}"><img src="${value}"/></a>`;
+	      }
+	      else {
 		  cell.textContent = value || '';
 	      }
 	      row.appendChild(cell);
