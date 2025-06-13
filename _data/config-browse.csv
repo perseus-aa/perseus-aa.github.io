@@ -16,4 +16,8 @@ site_type,site_type,true,false,site_type,site_type
 style,style,true,false,style,style
 technique,technique,true,false,technique,technique
 ware,ware,true,false,ware,ware
+context,context,true,false,context,context
+region,region,true,false,region,region
+site,site,true,false,site,site
+findspot,findspot,true,false,findspot,findspot
 
