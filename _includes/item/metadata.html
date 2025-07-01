@@ -5,21 +5,103 @@
     
 {%- endcomment -%}
 {%- assign fields = site.data.config-metadata | where_exp: 'item', 'item.display_name != nil' -%}
-<div id="item-metadata">
+<div class="row" id="item-metadata">
+  {% if page.objtype == "Vase" %}
+  <div class="col-md-6">
+    {% if page.summary %}
+    <h2>{{ page.summary }}</h2>
+    {% endif %}
+
+    {% if page.ware or page.shape %}
+    <p>
+      {{ page.ware }} {{ page.shape }}
+      {% if page.shape_description %}
+      ({{ page.shape_description }})
+      {% endif %}
+    </p>
+    {% endif %}
+
+    <p>
+      {% if page.period %}
+      {{ page.period }} period
+      {% if page.ceramic_phase %}
+      ({{ page.ceramic_phase }})
+      {% endif %}
+      {% endif %}
+      {% if page.start_date and page.end_date %}
+      {{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}.
+      {% else %}
+      {{ page.unitary_mod }} {{ page.unitary_date }}.
+      {% endif %}
+    </p>
+    
+    {% if page.date_description %}
+    <p>{{ page.date_description }}</p>
+    {% endif %}
+
+    {% if page.potter or page.painter or page.attributed_by %}
+    <p>
+      {% if page.painter %}
+      {{ page.painter_mod }} {{ page.painter }}
+      {% if page.potter %}
+      ; {{page.potter_mod }} {{page.potter}}
+      {% endif %}
+      {% endif %}
+      {% if page.attributed_by %}
+      (Attributed by {{ page.attributed_by }})
+      {% endif %}
+    </p>
+    {% endif %}
+
+    {% if page.dimensions %}
+    {{ page.dimensions }}
+    {% endif %}
+
+    {% if page.condit %}
+    <p>{{ page.condit }}</p>
+    {% endif %}
+
+    {% if page.region %}
     <dl>
-        {% for f in fields %}{% if page[f.field] %}
-        <dt class="field">{{ f.display_name }}:</dt>
-        <dd class="field-value">
-            {% if f.browse_link == "true" %}
-            {% assign topics = page[f.field] | split: ";" %}
-            {% for t in topics %}
-            <a class="me-3" href="{{ t | strip | url_param_escape | prepend: ':' | prepend: f.field | prepend: '/browse.html#' | relative_url }}">{{ t | strip }}</a>
-            {% endfor %}
-            {% elsif f.external_link == "true" %}
-            <a href="{{ page[f.field] }}">{{ page[f.field] }}</a>
-            {% else %}
-            {{ page[f.field] | replace: '""','"' }}{% endif %}
-        </dd>
-        {% endif %}{% endfor %}
+      <dt>region</dt>
+      <dd>{{ page.region }}</dd>
     </dl>
+    {% endif %}
+
+    {% if page.context %}
+    <p>{{ page.context_mod }} {{ page.context }}</p>
+    {% endif %}
+
+  </div>
+  <div class="col-md-6">
+    <p>{{ page.decoration_description }}</p>
+    <p>{{ page.relief }}</p>
+    <p>{{ page.graffiti }}</p>
+    <p>{{ page.inscriptions }}</p>
+  </div>
+  {% endif %}
+</div>
+<hr/>
+<div class="row">
+  <div class="col-md-6">
+    {% if page.collection %}
+    <h4>Provenance</h4>
+    <p>{{ page.collection }} {{ page.accession_number }}</p>
+    <p>{{ page.collection_history }}</p>
+    {% endif %}
+  </div>
+  <div class="col-md-6">
+    {% if page.comparanda %}
+    <h4>Notes</h4>
+    {{ page.comparanda }}
+    {% endif %}
+
+    {% if page.primary_citation or page.essay_number or page.sources_used or page.other_bibliography %}
+    <h4>Citations and Bibliography</h4>
+    <p>{{ page.primary_citation }}</p>
+    <p>{{ page.essay_number }}</p>
+    <p>{{ page.sources_used }}</p>
+    <p>{{ page.other_bibliography }}</p>
+    {% endif %}
+  </div>
 </div>
