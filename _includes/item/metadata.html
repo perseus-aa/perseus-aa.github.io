@@ -1,83 +1,127 @@
 {% comment %}
 
-    Adds metadata to item pages in a description list element.
-    Fields are configured via _data/config-metadata.csv 
+    Adds metadata to item pages, based on object type.
     
 {%- endcomment -%}
-{%- assign fields = site.data.config-metadata | where_exp: 'item', 'item.display_name != nil' -%}
+
 <div class="row" id="item-metadata">
   {% if page.objtype == "Vase" %}
   <div class="col-md-6">
     {% if page.summary %}
-    <h2>{{ page.summary }}</h2>
+    <h3 class="mb-3">{{ page.summary }}</h3>
     {% endif %}
-
-    {% if page.ware or page.shape %}
-    <p>
-      {{ page.ware }} {{ page.shape }}
-      {% if page.shape_description %}
-      ({{ page.shape_description }})
-      {% endif %}
-    </p>
-    {% endif %}
-
-    <p>
-      {% if page.period %}
-      {{ page.period }} period
-      {% if page.ceramic_phase %}
-      ({{ page.ceramic_phase }})
-      {% endif %}
-      {% endif %}
-      {% if page.start_date and page.end_date %}
-      {{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}.
-      {% else %}
-      {{ page.unitary_mod }} {{ page.unitary_date }}.
-      {% endif %}
-    </p>
-    
-    {% if page.date_description %}
-    <p>{{ page.date_description }}</p>
-    {% endif %}
-
-    {% if page.potter or page.painter or page.attributed_by %}
-    <p>
-      {% if page.painter %}
-      {{ page.painter_mod }} {{ page.painter }}
-      {% if page.potter %}
-      ; {{page.potter_mod }} {{page.potter}}
-      {% endif %}
-      {% endif %}
-      {% if page.attributed_by %}
-      (Attributed by {{ page.attributed_by }})
-      {% endif %}
-    </p>
-    {% endif %}
-
-    {% if page.dimensions %}
-    {{ page.dimensions }}
-    {% endif %}
-
-    {% if page.condit %}
-    <p>{{ page.condit }}</p>
-    {% endif %}
-
-    {% if page.region %}
     <dl>
-      <dt>region</dt>
-      <dd>{{ page.region }}</dd>
+      {% if page.collection %}
+      <dt>Collection:</dt>
+      <dd>{{ page.collection }}</dd>
+      {% endif %}
+
+      {% if page.summary %}
+      <dt>Summary:</dt>
+      <dd>{{ page.summary }}</dd>
+      {% endif %}
+
+      {% if page.ware %}
+      <dt>Ware:</dt>
+      <dd>{{ page.ware }}</dd>
+      {% endif %}
+
+      {% if page.painter %}
+      <dt>Painter:</dt>
+      <dd>{{ page.painter_mod}} {{ page.painter }}</dd>
+      {% endif %}
+
+      {% if page.potter %}
+      <dt>Potter:</dt>
+      <dd>{{ page.potter_mod }} {{ page.potter }}</dd>
+      {% endif %}
+
+      {% if page.attributed_by %}
+      <dt>Attributed By:</dt>
+      <dd>{{ page.attributed_by }}</dd>
+      {% endif %}
+
+      {% if page.context %}
+      <dt>Context:</dt>
+      <dd>{{ page.context_mod }} {{ page.context }}</dd>
+      {% endif %}
+
+      <dt>Date:</dt>
+      {% if page.start_date and page.end_date %}
+      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
+      {% else %}
+      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
+      {% endif %}
+
+      {% if page.dimensions %}
+      <dt>Dimensions:</dt>
+      <dd>{{ page.dimensions }}</dd>
+      {% endif %}
+
+      {% if page.primary_citation %}
+      <dt>Primary Citation:</dt>
+      <dd>{{ page.primary_citation }}</dd>
+      {% endif %}
+
+      {% if page.shape %}
+      <dt>Shape:</dt>
+      <dd>{{ page.shape }}</dd>
+      {% endif %}
+
+      {% if page.beazley_number %}
+      <dt>Beazley Number:</dt>
+      <dd>{{ page.beazley_number }}</dd>
+      {% endif %}
+
+      {% if page.period %}
+      <dt>Period:</dt>
+      <dd>{{ page.period }}</dd>
+      {% endif %}
+
+      {% if page.ceramic_phase %}
+      <dt>Ceramic Phase:</dt>
+      <dd>{{ page.ceramic_phase }}</dd>
+      {% endif %}
     </dl>
-    {% endif %}
-
-    {% if page.context %}
-    <p>{{ page.context_mod }} {{ page.context }}</p>
-    {% endif %}
-
   </div>
+
   <div class="col-md-6">
-    <p>{{ page.decoration_description }}</p>
-    <p>{{ page.relief }}</p>
-    <p>{{ page.graffiti }}</p>
-    <p>{{ page.inscriptions }}</p>
+      {% if page.date_description %}
+      <h5>Date Description</h5
+      <p>{{ page.date_description }}</p>
+      {% endif %}
+
+      {% if page.shape_description %}
+      <h5>Shape Description</h5
+      <p>{{ page.shape_description }}</p>
+      {% endif %}
+      
+
+      {% if page.decoration_description or page.relief %}
+      <h5>Decoration Description</h5
+      <p>{{ page.decoration_description }}</p>
+      {% endif %}
+
+      {% if page.relief %}
+      <p>{{ page.relief }}</p>
+      {% endif %}
+      
+      {% if page.material_description %}
+      <h5>Material Description</h5
+      <p>{{ page.material_description }}</p>
+      {% endif %}
+      
+      {% if page.graffiti or page.inscriptions %}
+      <h5>Graffiti</h5>
+	<p>{{ page.graffiti }}</p>
+	<p>{{ page.inscriptions }}</p>
+	{% endif %}
+
+     {% if page.comparanda %}
+      <h5>Notes</h5>
+      {{ page.comparanda }}
+      {% endif %}
+	
   </div>
   {% endif %}
 </div>
@@ -91,10 +135,6 @@
     {% endif %}
   </div>
   <div class="col-md-6">
-    {% if page.comparanda %}
-    <h4>Notes</h4>
-    {{ page.comparanda }}
-    {% endif %}
 
     {% if page.primary_citation or page.essay_number or page.sources_used or page.other_bibliography %}
     <h4>Citations and Bibliography</h4>
