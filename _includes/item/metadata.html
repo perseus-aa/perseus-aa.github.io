@@ -5,6 +5,7 @@
 {%- endcomment -%}
 
 <div class="row" id="item-metadata">
+  <!-- begin Vases -->
   {% if page.objtype == "Vase" %}
   <div class="col-md-6">
     {% if page.summary %}
@@ -87,18 +88,18 @@
 
   <div class="col-md-6">
       {% if page.date_description %}
-      <h5>Date Description</h5
+      <h5>Date Description</h5>
       <p>{{ page.date_description }}</p>
       {% endif %}
 
       {% if page.shape_description %}
-      <h5>Shape Description</h5
+      <h5>Shape Description</h5>
       <p>{{ page.shape_description }}</p>
       {% endif %}
       
 
       {% if page.decoration_description or page.relief %}
-      <h5>Decoration Description</h5
+      <h5>Decoration Description</h5>
       <p>{{ page.decoration_description }}</p>
       {% endif %}
 
@@ -107,7 +108,7 @@
       {% endif %}
       
       {% if page.material_description %}
-      <h5>Material Description</h5
+      <h5>Material Description</h5>
       <p>{{ page.material_description }}</p>
       {% endif %}
       
@@ -124,6 +125,136 @@
 	
   </div>
   {% endif %}
+  <!-- end of Vases -->
+
+  <!-- Sculptures -->
+  {% if page.objtype == "Sculpture" %}
+  <div class="col-md-6">
+    {% if page.summary %}
+    <h3 class="mb-3">{{ page.summary }}</h3>
+    {% endif %}
+    
+    <dl>
+      {% if page.start_date and page.end_date %}
+      <dt>Date:</dt>
+      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
+      {% else %}
+      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
+      {% endif %}
+      
+      {% if page.sculptor %}
+      <dt>Sculptor:</dt>
+      <dd>{{ page.sculptor_mod}} {{ page.sculptor }}</dd>
+      {% endif %}
+
+      {% if page.material %}
+      <dt>Material</dt>
+      <dd>{{ page.material }}</dd>
+      {% endif %}
+
+      {% if page.function %}
+      <dt>Function</dt>
+      <dd>{{ page.function }}</dd>
+      {% endif %}
+
+      {% if page.sculpture_type %}
+      <dt>Sculpture_Type</dt>
+      <dd>{{ page.sculpture_type }}</dd>
+      {% endif %}
+
+      {% if page.original_or_copy %}
+      <dt>Original or Copy</dt>
+      <dd>{{ page.original_or_copy }}</dd>
+      {% endif %}
+
+      {% if page.category %}
+      <dt>Category</dt>
+      <dd>{{ page.category }}</dd>
+      {% endif %}
+
+      {% if page.in_group %}
+      <dt>In Group:</dt>
+      <dd>{{ page.in_group }}</dd>
+      {% endif %}
+
+      {% if page.style %}
+      <dt>Style</dt>
+      <dd>{{ page.style }}</dd>
+      {% endif %}
+
+      {% if page.period %}
+      <dt>Period</dt>
+      <dd>{{ page.period }}</dd>
+      {% endif %}
+      
+      {% if page.context %}
+      <dt>Context:</dt>
+      <dd>{{ page.context_mod}} {{ page.context }}</dd>
+      {% endif %}
+      
+      {% if page.findspot %}
+      <dt>Findspot:</dt>
+      <dd>{{ page.findspot_mod}} {{ page.findspot }}</dd>
+      {% endif %}
+      
+      {% if page.in_whole %}
+      <dt>In Whole:</dt>
+      <dd>{{ page.in_whole }}</dd>
+      {% endif %}
+
+      {% if page.assoc_building %}
+      <dt>Associated Building:</dt>
+      <dd>{{ page.assoc_building }}</dd>
+      {% endif %}
+      
+      {% if page.scale %}
+      <dt>Scale:</dt>
+      <dd>{{ page.scale_mod}} {{ page.scale }}</dd>
+      {% endif %}
+      
+      {% if page.dimensions %}
+      <dt>Dimensions:</dt>
+      <dd>{{ page.dimensions_mod}} {{ page.dimensions }}</dd>
+      {% endif %}
+
+    </dl>
+  </div>
+  <div class="col-md-6">
+    {% if page.date_description %}
+    <h3>Date Description</h3>
+    <p>{{ page.date_description }}</p>
+    {% endif %}
+    
+    {% if page.form_style_description %}
+    <h3>Form and Style</h3>
+    <p>{{ page.form_style_description }}</p>
+    {% endif %}
+    
+    {% if page.material_description %}
+    <h3>Material Description</h3>
+    <p>{{ page.material_description }}</p>
+    {% endif %}
+
+    {% if page.technique_description %}
+    <h3>Technique Description</h3>
+    <p>{{ page.technique_description }}</p>
+    {% endif %}
+
+    {% if page.subject_description %}
+    <h3>Subject Description</h3>
+    <p>{{ page.subject_description }}</p>
+    {% endif %}
+
+    {% if page.condition_description %}
+    <h3>Condition Description</h3>
+    <p>{{ page.condition_description }}</p>
+    {% endif %}
+
+    
+  </div>
+  {% endif %}
+
+  <!-- end Sculptures -->
 </div>
 <hr/>
 <div class="row">

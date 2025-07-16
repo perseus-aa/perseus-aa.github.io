@@ -34,7 +34,10 @@ author: cwulfman
 #
 # Set the metadata for your collection (the name of the CSV file in your _data directory that describes the objects in your collection) 
 # Use the filename of your CSV **without** the ".csv" extension! E.g. _data/demo-metadata.csv --> "demo-metadata"
+
 metadata: metadata-full
+# metadata: metadata
+
 # page generation settings [optional!]
 # [optional: only used if you need to tweak CB defaults or generate from more than one data file]
 # page_gen:
@@ -47,8 +50,6 @@ metadata: metadata-full
 
 ##########
 # Site/Organization Branding 
-#   Enter information for your organization (replacing the CDIL links and name below) if you'd like to brand your site with a logo
-#   To remove the branding, comment out these values, or delete them. 
 #
 organization-name: "Perseus Digital Library"
 organization-link: https://www.perseus.tufts.edu
