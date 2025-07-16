@@ -216,9 +216,9 @@
       <dt>Dimensions:</dt>
       <dd>{{ page.dimensions_mod}} {{ page.dimensions }}</dd>
       {% endif %}
-
     </dl>
   </div>
+
   <div class="col-md-6">
     {% if page.date_description %}
     <h3>Date Description</h3>
@@ -248,15 +248,95 @@
     {% if page.condition_description %}
     <h3>Condition Description</h3>
     <p>{{ page.condition_description }}</p>
-    {% endif %}
-
-    
+    {% endif %}  
   </div>
   {% endif %}
 
   <!-- end Sculptures -->
+  
+
+  <!-- begin Coins -->
+  {% if page.objtype == "Coin" %}
+  <div class="col-md-6">
+    {% if page.summary %}
+    <h3 class="mb-3">{{ page.summary }}</h3>
+    {% endif %}
+    <dl>
+      {% if page.collection %}
+      <dt>Collection:</dt>
+      <dd>{{ page.collection }}</dd>
+      {% endif %}
+
+      {% if page.context %}
+      <dt>Context:</dt>
+      <dd>{{ page.context }}</dd>
+      {% endif %}
+
+      {% if page.material %}
+      <dt>Material:</dt>
+      <dd>{{ page.material }}</dd>
+      {% endif %}
+
+      {% if page.denomination %}
+      <dt>Denomination:</dt>
+      <dd>{{ page.denomination }}</dd>
+      {% endif %}
+
+      {% if page.actual_weight %}
+      <dt>Actual Weight:</dt>
+      <dd>{{ page.actual_weight }}</dd>
+      {% endif %}
+
+      {% if page.die_axis %}
+      <dt>Die Axis:</dt>
+      <dd>{{ page.die_axis }}</dd>
+      {% endif %}
+
+      {% if page.start_date and page.end_date %}
+      <dt>Date:</dt>
+      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
+      {% else %}
+      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
+      {% endif %}
+      
+
+      {% if page.region %}
+      <dt>Region</dt>
+      <dd>{{ page.region }}</dd>
+      {% endif %}
+
+      {% if page.period %}
+      <dt>Period</dt>
+      <dd>{{ page.period }}</dd>
+      {% endif %}
+      
+    </dl>
+  </div>
+  <div class="col-md-6">
+    <dl>
+      {% if page.obverse_type %}
+      <dt>Obverse Type:</dt>
+      <dd>{{ page.obverse_type }}</dd>
+      {% endif %}
+      
+      {% if page.reverse_type %}
+      <dt>Reverse Type:</dt>
+      <dd>{{ page.reverse_type }}</dd>
+      {% endif %}
+      
+      {% if page.reverse_legend %}
+      <dt>Reverse Legend:</dt>
+      <dd>{{ page.reverse_legend }}</dd>
+      {% endif %}
+      
+    </dl>
+  </div>
+  {% endif %}
+  <!-- end Coins -->
 </div>
+
 <hr/>
+
 <div class="row">
   <div class="col-md-6">
     {% if page.collection %}
