@@ -431,6 +431,50 @@
   {% endif %}
   <!-- end Gems -->
 
+<!-- begin Sites -->
+  {% if page.objtype == "Site" %}
+  <div class="col-md-6">
+    {% if page.summary %}
+    <h3 class="mb-3">{{ page.summary }}</h3>
+    {% endif %}
+    
+    <dl>
+      {% if page.site_type %}
+      <dt>Type:</dt>
+      <dd>{{ page.site_type }}</dd>
+      {% endif %}
+
+      {% if page.region %}
+      <dt>Region:</dt>
+      <dd>{{ page.region }}</dd>
+      {% endif %}
+
+      {% if page.periods %}
+      <dt>Periods:</dt>
+      <dd>{{ page.periods }}</dd>
+      {% endif %}
+    </dl>
+  </div>
+  <div class="col-md-6">
+    {% if page.description %}
+    <h5>Description</h5>
+    {{ page.description }}
+    {% endif %}
+
+    {% if page.physical %}
+    <h5>Physical</h5>
+    {{ page.physical }}
+    {% endif %}
+
+    {% if page.exploration %}
+    <h5>Exploration</h5>
+    {{ page.exploration }}
+    {% endif %}
+    
+  </div>
+  {% endif %}
+  <!-- end Sites -->
+
 
 </div>
 
