@@ -381,24 +381,79 @@
       <h5>History</h5>
       {{ page.history }}
       {% endif %}
-
-
   </div>
   {% endif %}
-  <!-- end Building -->
+  <!-- end Buildings -->
+
+<!-- begin Gems -->
+  {% if page.objtype == "Gem" %}
+  <div class="col-md-6">
+    <dl>
+      {% if page.sculpture_type %}
+      <dt>Type:</dt>
+      <dd>{{ page.sculpture_type }}</dd>
+      {% endif %}
+
+      {% if page.material %}
+      <dt>Material:</dt>
+      <dd>{{ page.material_description }} {{ page.material }}</dd>
+      {% endif %}
+
+      {% if page.start_date and page.end_date %}
+      <dt>Date:</dt>
+      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
+      {% else %}
+      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
+      {% endif %}
+
+      {% if page.style %}
+      <dt>Style:</dt>
+      <dd>{{ page.style }}</dd>
+      {% endif %}
+
+      {% if page.dimensions %}
+      <dt>Dimensions:</dt>
+      <dd>{{ page.dimensions }}</dd>
+      {% endif %}
+      
+      {% if page.culture %}
+      <dt>Culture:</dt>
+      <dd>{{ page.culture }}</dd>
+      {% endif %}
+      
+    </dl>
+  </div>
+  <div class="col-md-6">
+    {% if page.summary %}
+    <p>{{ page.summary }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+  <!-- end Gems -->
 
 
 </div>
+
+
+
 
 <hr/>
 
 <div class="row">
   <div class="col-md-6">
+    <dl>
     {% if page.collection %}
-    <h4>Provenance</h4>
-    <p>{{ page.collection }} {{ page.accession_number }}</p>
-    <p>{{ page.collection_history }}</p>
+    <dt>Collection:</dt>
+    <dd>{{ page.collection }} {{ page.accession_number }}</dd>
+    <dd>{{ page.collection_history }}</dd>
     {% endif %}
+      
+    {% if page.donor %}
+    <dt>Donor:</dt>
+    <dd>{{ page.donor }}</dd>
+    {% endif %}
+      
+    </dl>
   </div>
   <div class="col-md-6">
 
