@@ -333,6 +333,61 @@
   </div>
   {% endif %}
   <!-- end Coins -->
+  
+  <!-- begin Buildings -->
+  {% if page.objtype == "Building" %}
+  <div class="col-md-6">
+    {% if page.summary %}
+    <h3 class="mb-3">{{ page.summary }}</h3>
+    {% endif %}
+    <dl>
+      {% if page.building_type %}
+      <dt>Building Type:</dt>
+      <dd>{{ page.building_type }}</dd>
+      {% endif %}
+
+      {% if page.context %}
+      <dt>Context:</dt>
+      <dd>{{ page.context }}</dd>
+      {% endif %}
+
+
+      {% if page.start_date and page.end_date %}
+      <dt>Date:</dt>
+      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
+      {% else %}
+      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
+      {% endif %}
+
+      {% if page.region %}
+      <dt>Region</dt>
+      <dd>{{ page.region }}</dd>
+      {% endif %}
+
+      {% if page.period %}
+      <dt>Period</dt>
+      <dd>{{ page.period }}</dd>
+      {% endif %}
+      
+    </dl>
+  </div>
+  <div class="col-md-6">
+    {% if page.plan %}
+      <h5>Plan</h5>
+      {{ page.plan }}
+      {% endif %}
+
+    {% if page.history %}
+      <h5>History</h5>
+      {{ page.history }}
+      {% endif %}
+
+
+  </div>
+  {% endif %}
+  <!-- end Building -->
+
+
 </div>
 
 <hr/>
