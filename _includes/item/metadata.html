@@ -95,6 +95,11 @@
       <dd>{{ page.sculptor_mod}} {{ page.sculptor }}</dd>
       {% endif %}
 
+      {% if page.architect %}
+      <dt>Architect:</dt>
+      <dd>{{ page.architect_mod}} {{ page.architect }}</dd>
+      {% endif %}
+
 
 
     </dl>
@@ -104,6 +109,11 @@
   <!-- column 2 -->
   <div class="col-md-3">
     <dl>
+      {% if page.condit %}
+      <dt>Condition:</dt>
+      <dd>{{ page.condit }}</dd>
+      {% endif %}
+      
       {% if page.scale %}
       <dt>Scale:</dt>
       <dd>{{ page.scale_mod}} {{ page.scale }}</dd>
@@ -195,6 +205,11 @@
       <dd>{{ page.obverse_type }}</dd>
       {% endif %}
       
+      {% if page.obverse_legend %}
+      <dt>Obverse Legend:</dt>
+      <dd>{{ page.obverse_legend }}</dd>
+      {% endif %}
+
       {% if page.reverse_type %}
       <dt>Reverse Type:</dt>
       <dd>{{ page.reverse_type }}</dd>
@@ -203,6 +218,11 @@
       {% if page.reverse_legend %}
       <dt>Reverse Legend:</dt>
       <dd>{{ page.reverse_legend }}</dd>
+      {% endif %}
+      
+      {% if page.issuing_authority %}
+      <dt>Issuing Authority:</dt>
+      <dd>{{ page.issuing_authority }}</dd>
       {% endif %}
     </dl>
   </div>
