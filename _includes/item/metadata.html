@@ -4,29 +4,77 @@
     
 {%- endcomment -%}
 
+
 <div class="row" id="item-metadata">
-  <!-- begin Vases -->
-  {% if page.objtype == "Vase" %}
-  <div class="col-md-6">
-    {% if page.summary %}
-    <h3 class="mb-3">{{ page.summary }}</h3>
-    {% endif %}
+  {% if page.summary %}
+  <h3 class="mb-3">{{ page.summary }}</h3>
+  {% endif %}
+
+
+  <!-- column 1 -->
+  <div class="col-md-3">
     <dl>
-      {% if page.collection %}
-      <dt>Collection:</dt>
-      <dd>{{ page.collection }}</dd>
+      <dt>ID:</dt>
+      <dd>{{ page.id }}</dd>
+
+      {% if page.beazley_number %}
+      <dt>Beazley Number:</dt>
+      <dd>{{ page.beazley_number }}</dd>
       {% endif %}
 
-      {% if page.summary %}
-      <dt>Summary:</dt>
-      <dd>{{ page.summary }}</dd>
+      <dt>Type:</dt>
+      <dd>{{ page.objtype }}</dd>
+
+
+      <!-- Dating -->
+      <dt>Date:</dt>
+
+      {% if page.start_date and page.end_date %}
+      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
+      {% else %}
+      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
+      {% endif %}
+      
+      {% if page.period %}
+      <dt>Period:</dt>
+      <dd>{{ page.period }}</dd>
       {% endif %}
 
-      {% if page.ware %}
-      <dt>Ware:</dt>
-      <dd>{{ page.ware }}</dd>
+      {% if page.periods %}
+      <dt>Periods:</dt>
+      <dd>{{ page.periods }}</dd>
       {% endif %}
 
+      {% if page.ceramic_phase %}
+      <dt>Ceramic Phase:</dt>
+      <dd>{{ page.ceramic_phase }}</dd>
+      {% endif %}
+
+      {% if page.culture %}
+      <dt>Culture:</dt>
+      <dd>{{ page.culture }}</dd>
+      {% endif %}
+      
+
+
+
+      <!-- Location -->
+      {% if page.context %}
+      <dt>Context:</dt>
+      <dd>{{ page.context_mod }} {{ page.context }}</dd>
+      {% endif %}
+
+      {% if page.findspot %}
+      <dt>Findspot:</dt>
+      <dd>{{ page.findspot_mod}} {{ page.findspot }}</dd>
+      {% endif %}
+      
+      {% if page.region %}
+      <dt>Region:</dt>
+      <dd>{{ page.region }}</dd>
+      {% endif %}
+
+      <!-- Creators -->
       {% if page.painter %}
       <dt>Painter:</dt>
       <dd>{{ page.painter_mod}} {{ page.painter }}</dd>
@@ -42,26 +90,34 @@
       <dd>{{ page.attributed_by }}</dd>
       {% endif %}
 
-      {% if page.context %}
-      <dt>Context:</dt>
-      <dd>{{ page.context_mod }} {{ page.context }}</dd>
+      {% if page.sculptor %}
+      <dt>Sculptor:</dt>
+      <dd>{{ page.sculptor_mod}} {{ page.sculptor }}</dd>
       {% endif %}
 
-      <dt>Date:</dt>
-      {% if page.start_date and page.end_date %}
-      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
-      {% else %}
-      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
-      {% endif %}
 
+
+    </dl>
+  </div>
+
+
+  <!-- column 2 -->
+  <div class="col-md-3">
+    <dl>
+      {% if page.scale %}
+      <dt>Scale:</dt>
+      <dd>{{ page.scale_mod}} {{ page.scale }}</dd>
+      {% endif %}
+      
+    
       {% if page.dimensions %}
       <dt>Dimensions:</dt>
-      <dd>{{ page.dimensions }}</dd>
+      <dd>{{ page.dimensions_mod}} {{ page.dimensions }}</dd>
       {% endif %}
 
-      {% if page.primary_citation %}
-      <dt>Primary Citation:</dt>
-      <dd>{{ page.primary_citation }}</dd>
+      {% if page.ware %}
+      <dt>Ware:</dt>
+      <dd>{{ page.ware }}</dd>
       {% endif %}
 
       {% if page.shape %}
@@ -69,106 +125,39 @@
       <dd>{{ page.shape }}</dd>
       {% endif %}
 
-      {% if page.beazley_number %}
-      <dt>Beazley Number:</dt>
-      <dd>{{ page.beazley_number }}</dd>
-      {% endif %}
-
-      {% if page.period %}
-      <dt>Period:</dt>
-      <dd>{{ page.period }}</dd>
-      {% endif %}
-
-      {% if page.ceramic_phase %}
-      <dt>Ceramic Phase:</dt>
-      <dd>{{ page.ceramic_phase }}</dd>
-      {% endif %}
-    </dl>
-  </div>
-
-  <div class="col-md-6">
-      {% if page.date_description %}
-      <h5>Date Description</h5>
-      <p>{{ page.date_description }}</p>
-      {% endif %}
-
-      {% if page.shape_description %}
-      <h5>Shape Description</h5>
-      <p>{{ page.shape_description }}</p>
-      {% endif %}
-      
-
-      {% if page.decoration_description or page.relief %}
-      <h5>Decoration Description</h5>
-      <p>{{ page.decoration_description }}</p>
-      {% endif %}
-
-      {% if page.relief %}
-      <p>{{ page.relief }}</p>
-      {% endif %}
-      
-      {% if page.material_description %}
-      <h5>Material Description</h5>
-      <p>{{ page.material_description }}</p>
-      {% endif %}
-      
-      {% if page.graffiti or page.inscriptions %}
-      <h5>Graffiti</h5>
-	<p>{{ page.graffiti }}</p>
-	<p>{{ page.inscriptions }}</p>
-	{% endif %}
-
-     {% if page.comparanda %}
-      <h5>Notes</h5>
-      {{ page.comparanda }}
-      {% endif %}
-	
-  </div>
-  {% endif %}
-  <!-- end of Vases -->
-
-  <!-- Sculptures -->
-  {% if page.objtype == "Sculpture" %}
-  <div class="col-md-6">
-    {% if page.summary %}
-    <h3 class="mb-3">{{ page.summary }}</h3>
-    {% endif %}
-    
-    <dl>
-      {% if page.start_date and page.end_date %}
-      <dt>Date:</dt>
-      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
-      {% else %}
-      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
-      {% endif %}
-      
-      {% if page.sculptor %}
-      <dt>Sculptor:</dt>
-      <dd>{{ page.sculptor_mod}} {{ page.sculptor }}</dd>
+      {% if page.style %}
+      <dt>Style:</dt>
+      <dd>{{ page.style }}</dd>
       {% endif %}
 
       {% if page.material %}
-      <dt>Material</dt>
+      <dt>Material:</dt>
       <dd>{{ page.material }}</dd>
       {% endif %}
 
       {% if page.function %}
-      <dt>Function</dt>
+      <dt>Function:</dt>
       <dd>{{ page.function }}</dd>
       {% endif %}
 
       {% if page.sculpture_type %}
-      <dt>Sculpture_Type</dt>
+      <dt>Type:</dt>
       <dd>{{ page.sculpture_type }}</dd>
       {% endif %}
 
-      {% if page.original_or_copy %}
-      <dt>Original or Copy</dt>
-      <dd>{{ page.original_or_copy }}</dd>
+      {% if page.site_type %}
+      <dt>Type:</dt>
+      <dd>{{ page.site_type }}</dd>
       {% endif %}
 
+      {% if page.building_type %}
+      <dt>Type:</dt>
+      <dd>{{ page.building_type }}</dd>
+      {% endif %}
+      
+
       {% if page.category %}
-      <dt>Category</dt>
+      <dt>Category:</dt>
       <dd>{{ page.category }}</dd>
       {% endif %}
 
@@ -177,104 +166,14 @@
       <dd>{{ page.in_group }}</dd>
       {% endif %}
 
-      {% if page.style %}
-      <dt>Style</dt>
-      <dd>{{ page.style }}</dd>
-      {% endif %}
-
-      {% if page.period %}
-      <dt>Period</dt>
-      <dd>{{ page.period }}</dd>
-      {% endif %}
-      
-      {% if page.context %}
-      <dt>Context:</dt>
-      <dd>{{ page.context_mod}} {{ page.context }}</dd>
-      {% endif %}
-      
-      {% if page.findspot %}
-      <dt>Findspot:</dt>
-      <dd>{{ page.findspot_mod}} {{ page.findspot }}</dd>
-      {% endif %}
-      
       {% if page.in_whole %}
       <dt>In Whole:</dt>
       <dd>{{ page.in_whole }}</dd>
       {% endif %}
-
+      
       {% if page.assoc_building %}
       <dt>Associated Building:</dt>
       <dd>{{ page.assoc_building }}</dd>
-      {% endif %}
-      
-      {% if page.scale %}
-      <dt>Scale:</dt>
-      <dd>{{ page.scale_mod}} {{ page.scale }}</dd>
-      {% endif %}
-      
-      {% if page.dimensions %}
-      <dt>Dimensions:</dt>
-      <dd>{{ page.dimensions_mod}} {{ page.dimensions }}</dd>
-      {% endif %}
-    </dl>
-  </div>
-
-  <div class="col-md-6">
-    {% if page.date_description %}
-    <h3>Date Description</h3>
-    <p>{{ page.date_description }}</p>
-    {% endif %}
-    
-    {% if page.form_style_description %}
-    <h3>Form and Style</h3>
-    <p>{{ page.form_style_description }}</p>
-    {% endif %}
-    
-    {% if page.material_description %}
-    <h3>Material Description</h3>
-    <p>{{ page.material_description }}</p>
-    {% endif %}
-
-    {% if page.technique_description %}
-    <h3>Technique Description</h3>
-    <p>{{ page.technique_description }}</p>
-    {% endif %}
-
-    {% if page.subject_description %}
-    <h3>Subject Description</h3>
-    <p>{{ page.subject_description }}</p>
-    {% endif %}
-
-    {% if page.condition_description %}
-    <h3>Condition Description</h3>
-    <p>{{ page.condition_description }}</p>
-    {% endif %}  
-  </div>
-  {% endif %}
-
-  <!-- end Sculptures -->
-  
-
-  <!-- begin Coins -->
-  {% if page.objtype == "Coin" %}
-  <div class="col-md-6">
-    {% if page.summary %}
-    <h3 class="mb-3">{{ page.summary }}</h3>
-    {% endif %}
-    <dl>
-      {% if page.collection %}
-      <dt>Collection:</dt>
-      <dd>{{ page.collection }}</dd>
-      {% endif %}
-
-      {% if page.context %}
-      <dt>Context:</dt>
-      <dd>{{ page.context }}</dd>
-      {% endif %}
-
-      {% if page.material %}
-      <dt>Material:</dt>
-      <dd>{{ page.material }}</dd>
       {% endif %}
 
       {% if page.denomination %}
@@ -291,29 +190,6 @@
       <dt>Die Axis:</dt>
       <dd>{{ page.die_axis }}</dd>
       {% endif %}
-
-      {% if page.start_date and page.end_date %}
-      <dt>Date:</dt>
-      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
-      {% else %}
-      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
-      {% endif %}
-      
-
-      {% if page.region %}
-      <dt>Region</dt>
-      <dd>{{ page.region }}</dd>
-      {% endif %}
-
-      {% if page.period %}
-      <dt>Period</dt>
-      <dd>{{ page.period }}</dd>
-      {% endif %}
-      
-    </dl>
-  </div>
-  <div class="col-md-6">
-    <dl>
       {% if page.obverse_type %}
       <dt>Obverse Type:</dt>
       <dd>{{ page.obverse_type }}</dd>
@@ -328,50 +204,64 @@
       <dt>Reverse Legend:</dt>
       <dd>{{ page.reverse_legend }}</dd>
       {% endif %}
-      
     </dl>
   </div>
-  {% endif %}
-  <!-- end Coins -->
-  
-  <!-- begin Buildings -->
-  {% if page.objtype == "Building" %}
+
+
+  <!-- column 3 -->
   <div class="col-md-6">
-    {% if page.summary %}
-    <h3 class="mb-3">{{ page.summary }}</h3>
-    {% endif %}
-    <dl>
-      {% if page.building_type %}
-      <dt>Building Type:</dt>
-      <dd>{{ page.building_type }}</dd>
+      {% if page.date_description %}
+      <h5>Date Description</h5>
+      <p>{{ page.date_description }}</p>
       {% endif %}
 
-      {% if page.context %}
-      <dt>Context:</dt>
-      <dd>{{ page.context }}</dd>
+      {% if page.shape_description %}
+      <h5>Shape Description</h5>
+      <p>{{ page.shape_description }}</p>
+      {% endif %}
+
+      {% if page.form_style_description %}
+      <h5>Form and Style</h3>
+      <p>{{ page.form_style_description }}</p>
       {% endif %}
 
 
-      {% if page.start_date and page.end_date %}
-      <dt>Date:</dt>
-      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
-      {% else %}
-      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
-      {% endif %}
-
-      {% if page.region %}
-      <dt>Region</dt>
-      <dd>{{ page.region }}</dd>
-      {% endif %}
-
-      {% if page.period %}
-      <dt>Period</dt>
-      <dd>{{ page.period }}</dd>
+      {% if page.decoration_description or page.relief %}
+      <h5>Decoration Description</h5>
+      <p>{{ page.decoration_description }}</p>
       {% endif %}
       
-    </dl>
-  </div>
-  <div class="col-md-6">
+      {% if page.relief %}
+      <p>{{ page.relief }}</p>
+      {% endif %}
+      
+      {% if page.material_description %}
+      <h5>Material Description</h5>
+      <p>{{ page.material_description }}</p>
+      {% endif %}
+      
+      {% if page.graffiti or page.inscriptions %}
+      <h5>Graffiti</h5>
+      <p>{{ page.graffiti }}</p>
+      <p>{{ page.inscriptions }}</p>
+      {% endif %}
+      
+      
+      {% if page.technique_description %}
+      <h5>Technique Description</h5>
+      <p>{{ page.technique_description }}</p>
+      {% endif %}
+      
+      {% if page.subject_description %}
+      <h5>Subject Description</h5>
+      <p>{{ page.subject_description }}</p>
+      {% endif %}
+      
+      {% if page.condition_description %}
+      <h5>Condition Description</h5>
+      <p>{{ page.condition_description }}</p>
+      {% endif %}  
+	
     {% if page.plan %}
       <h5>Plan</h5>
       {{ page.plan }}
@@ -381,81 +271,7 @@
       <h5>History</h5>
       {{ page.history }}
       {% endif %}
-  </div>
-  {% endif %}
-  <!-- end Buildings -->
-
-<!-- begin Gems -->
-  {% if page.objtype == "Gem" %}
-  <div class="col-md-6">
-    <dl>
-      {% if page.sculpture_type %}
-      <dt>Type:</dt>
-      <dd>{{ page.sculpture_type }}</dd>
-      {% endif %}
-
-      {% if page.material %}
-      <dt>Material:</dt>
-      <dd>{{ page.material_description }} {{ page.material }}</dd>
-      {% endif %}
-
-      {% if page.start_date and page.end_date %}
-      <dt>Date:</dt>
-      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
-      {% else %}
-      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
-      {% endif %}
-
-      {% if page.style %}
-      <dt>Style:</dt>
-      <dd>{{ page.style }}</dd>
-      {% endif %}
-
-      {% if page.dimensions %}
-      <dt>Dimensions:</dt>
-      <dd>{{ page.dimensions }}</dd>
-      {% endif %}
       
-      {% if page.culture %}
-      <dt>Culture:</dt>
-      <dd>{{ page.culture }}</dd>
-      {% endif %}
-      
-    </dl>
-  </div>
-  <div class="col-md-6">
-    {% if page.summary %}
-    <p>{{ page.summary }}</p>
-    {% endif %}
-  </div>
-  {% endif %}
-  <!-- end Gems -->
-
-<!-- begin Sites -->
-  {% if page.objtype == "Site" %}
-  <div class="col-md-6">
-    {% if page.summary %}
-    <h3 class="mb-3">{{ page.summary }}</h3>
-    {% endif %}
-    
-    <dl>
-      {% if page.site_type %}
-      <dt>Type:</dt>
-      <dd>{{ page.site_type }}</dd>
-      {% endif %}
-
-      {% if page.region %}
-      <dt>Region:</dt>
-      <dd>{{ page.region }}</dd>
-      {% endif %}
-
-      {% if page.periods %}
-      <dt>Periods:</dt>
-      <dd>{{ page.periods }}</dd>
-      {% endif %}
-    </dl>
-  </div>
-  <div class="col-md-6">
     {% if page.description %}
     <h5>Description</h5>
     {{ page.description }}
@@ -471,15 +287,16 @@
     {{ page.exploration }}
     {% endif %}
     
+
+     {% if page.comparanda %}
+    <h5>Notes</h5>
+    {{ page.comparanda }}
+    {% endif %}
+
   </div>
-  {% endif %}
-  <!-- end Sites -->
 
 
 </div>
-
-
-
 
 <hr/>
 
@@ -510,3 +327,5 @@
     {% endif %}
   </div>
 </div>
+
+
