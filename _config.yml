@@ -36,7 +36,6 @@ author: cwulfman
 # Use the filename of your CSV **without** the ".csv" extension! E.g. _data/demo-metadata.csv --> "demo-metadata"
 
 # metadata: metadata-full
-# metadata: metadata
 metadata: metadata-brief
 
 # page generation settings [optional!]
