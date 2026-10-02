@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg {{ site.data.theme.navbar-color | default: 'navbar-dark' }} {{ site.data.theme.navbar-background | default: 'bg-dark' }}">
     <div class="container">
-        {% if site.organization-logo-nav %}<a class="navbar-brand me-3" href="{{ site.organization-link }}" title="{{ site.organization-name }}">
+        {% if site.organization-logo-nav and layout.item-header != true %}<a class="navbar-brand me-3" href="{{ site.organization-link }}" title="{{ site.organization-name }}">
             <img id="nav-brand-image" src="{{ site.organization-logo-nav | relative_url }}" alt="{{ site.organization-name | escape }} home" >
         </a>{% endif %}
 
