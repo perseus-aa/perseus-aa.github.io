@@ -53,7 +53,9 @@ metadata: metadata-brief
 # Site/Organization Branding 
 #
 organization-name: "Perseus Digital Library"
-organization-link: https://www.perseus.tufts.edu
+organization-link: https://beta.perseus.tufts.edu/
+# Perseus running-man icon, shown in the navbar, home banner and footer
+organization-logo-nav: /assets/img/perseus-running-man.png
 
 ##########
 # ROBOTS EXCLUDE

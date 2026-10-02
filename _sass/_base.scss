@@ -44,7 +44,7 @@ a {
 	border-right:1px solid white;
 	border-bottom:1px solid white;
 	border-bottom-right-radius:8px;
-	background:#BF1722;
+	background:#ba5a42; /* MVP primary */
 	-webkit-transition: top 1s ease-out;
     transition: top 1s ease-out;
     z-index: 100;
@@ -64,8 +64,9 @@ a {
 }
 
 /* nav bar */
-#mobile-nav-image {
-    max-height: 1.5em;
+#nav-brand-image {
+    height: 2.25rem;
+    width: auto;
 }
 
 /* footer */
