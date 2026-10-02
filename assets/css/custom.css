@@ -137,10 +137,18 @@ body {
     border-color: var(--perseus-base-300);
 }
 
-/* footer: warm charcoal */
-footer.bg-dark {
-    background-color: var(--perseus-neutral) !important;
-    color: var(--perseus-neutral-content);
+/* footer: MVP uses bg-base-300 with base-content text */
+#site-footer {
+    background-color: var(--perseus-base-300);
+    color: var(--perseus-base-content);
+    font-size: .875rem;
+}
+#site-footer a {
+    color: inherit;
+    text-decoration: underline;
+}
+#site-footer a:hover {
+    color: var(--perseus-primary-text);
 }
 
 /* definition lists */
