@@ -28,8 +28,9 @@
     :root { font-family: InterVariable, sans-serif; }
 }
 
+/* page background is base-200, with base-100 cards on it, as on MVP */
 body {
-    background-color: var(--perseus-base-100);
+    background-color: var(--perseus-base-200);
     color: var(--perseus-base-content);
 }
 
@@ -54,9 +55,6 @@ body {
 }
 .navbar-dark .navbar-nav .nav-link.active {
     font-weight: 600;
-}
-.navbar .navbar-brand {
-    padding: 0;
 }
 .dropdown-menu {
     background-color: var(--perseus-base-100);

@@ -1,0 +1,32 @@
+{% comment %}
+
+    Page header, modeled on the MVP pages: running-man icon linking to the Perseus home page,
+    followed by a title and subtitle. Used on every page in place of CollectionBuilder's
+    site banner (_includes/collection-banner.html, no longer included).
+    A layout can set `page-header` in its front matter to choose the content:
+
+    - "site" (default): the site title and tagline
+    - "item": the item title (with object type) and item summary
+
+{%- endcomment -%}
+{%- assign header_mode = layout.page-header | default: 'site' -%}
+{%- if header_mode == 'site' -%}
+    {%- assign header_title = site.title -%}
+    {%- assign header_subtitle = site.tagline -%}
+{%- else -%}
+    {%- capture header_title -%}{{ page.title }}{% if page.objtype %} ({{ page.objtype }}){% endif %}{%- endcapture -%}
+    {%- assign header_subtitle = page.summary -%}
+{%- endif -%}
+<header id="page-header" class="page-header-{{ header_mode }} {% if header_mode == 'site' %}container{% else %}container-fluid{% endif %} py-3">
+    <div class="d-flex align-items-center">
+        {% if site.organization-logo-nav %}<a class="me-3 flex-shrink-0" href="{{ site.organization-link }}" title="{{ site.organization-name }}">
+            <img id="page-header-logo" src="{{ site.organization-logo-nav | relative_url }}" alt="{{ site.organization-name | escape }} home" >
+        </a>{% endif %}
+        <div>
+            {%- comment -%} the title is the page's <h1> unless the page content already has one (modal titles don't count) {%- endcomment -%}
+            {%- assign content_without_modals = content | remove: '<h1 class="modal-title' -%}
+            {% if content_without_modals contains '<h1' %}<p class="page-header-title h3 mb-0">{{ header_title }}</p>{% else %}<h1 class="page-header-title h3 mb-0">{{ header_title }}</h1>{% endif %}
+            {% if header_subtitle %}<p class="lead mb-0">{{ header_subtitle }}</p>{% endif %}
+        </div>
+    </div>
+</header>

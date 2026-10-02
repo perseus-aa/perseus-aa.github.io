@@ -64,15 +64,20 @@ a {
 }
 
 /* nav bar */
-#nav-brand-image {
-    height: 2.25rem;
-    width: auto;
-}
-
-/* item page header */
-#item-header-logo {
+/* page header (item pages; the site header on the home page is larger, as on MVP) */
+#page-header-logo {
     height: 4rem;
     width: auto;
+}
+.page-header-site #page-header-logo {
+    height: 6rem;
+}
+.page-header-site .page-header-title {
+    font-variant: small-caps;
+    font-weight: 700;
+}
+.page-header-site .lead {
+    font-weight: 700;
 }
 
 /* scroll to top */
