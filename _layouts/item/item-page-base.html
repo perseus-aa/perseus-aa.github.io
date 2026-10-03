@@ -6,21 +6,30 @@ item-meta: true
 # page-header replaces the site banner with the item title header (_includes/page-header.html)
 page-header: item
 ---
-<div class="container-fluid py-3">
-    <div class="row">
+<div class="container py-3">
+    <div class="row g-4">
 
-        <div class="col-md-8" id="metadata">
+        {%- comment -%} images first on small screens; facts card at the left on wide screens {%- endcomment -%}
+        <div class="col-lg-4 order-2 order-lg-1" id="metadata">
 
-            {% include item/metadata.html %}
+            {% include item/metadata.html part="facts" %}
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-8 order-1 order-lg-2">
 
         {{ content }}
 
         </div>
 
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-9 item-descriptions">
+
+            {% include item/metadata.html part="descriptions" %}
+
+        </div>
     </div>
 
     {%- if site.data.theme.browse-buttons == true -%}

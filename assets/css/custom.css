@@ -163,3 +163,23 @@ dt {
 dd {
     grid-column-start: 2;
 }
+
+/* item page: facts card (labels above values) and readable prose */
+.item-facts dl {
+    display: block;
+}
+.item-facts dt {
+    font-size: .75rem;
+    font-variant: small-caps;
+    letter-spacing: .04em;
+    margin: .75rem 0 0;
+}
+.item-facts dt:first-child {
+    margin-top: 0;
+}
+.item-facts dd {
+    margin-bottom: 0;
+}
+.item-descriptions h5 {
+    margin-top: 1.5rem;
+}

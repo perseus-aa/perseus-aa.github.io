@@ -1,16 +1,18 @@
 {% comment %}
 
-    Adds metadata to item pages, based on object type.
-    
+    Adds metadata to item pages, based on object type. Called twice by item-page-base:
+
+    - part="facts": the short labeled fields (a card beside the images), plus collection and donor
+    - part="descriptions": the long prose fields and the citations (full width, below the images)
+
+    The summary is shown in the page header (page-header.html).
+
 {%- endcomment -%}
 
-
-<div class="row" id="item-metadata">
-  {% comment %} the summary is shown in the page header (page-header.html) {% endcomment %}
-
-  <!-- column 1 -->
-  <div class="col-md-6">
-    <dl>
+{%- if include.part == 'facts' -%}
+<div class="card item-facts" id="item-metadata">
+  <div class="card-body">
+    <dl class="mb-0">
       <dt>ID:</dt>
       <dd>{{ page.id }}</dd>
 
@@ -214,13 +216,22 @@
       {% endif %}
 
 
+    {% if page.collection %}
+      <dt>Collection:</dt>
+      <dd>{{ page.collection }} {{ page.accession_number }}</dd>
+      {% if page.collection_history %}<dd>{{ page.collection_history }}</dd>{% endif %}
+    {% endif %}
+
+    {% if page.donor %}
+      <dt>Donor:</dt>
+      <dd>{{ page.donor }}</dd>
+    {% endif %}
+
     </dl>
   </div>
-
-
-
-  <!-- column 2 -->
-  <div class="col-md-6">
+</div>
+{%- else -%}
+<div id="item-descriptions">
       {% if page.date_description %}
       <h5>Date Description</h5>
       <p>{{ page.date_description }}</p>
@@ -232,7 +243,7 @@
       {% endif %}
 
       {% if page.form_style_description %}
-      <h5>Form and Style</h3>
+      <h5>Form and Style</h5>
       <p>{{ page.form_style_description }}</p>
       {% endif %}
 
@@ -304,37 +315,14 @@
     {{ page.comparanda }}
     {% endif %}
 
-  </div>
-
-
 </div>
 
+{% if page.primary_citation or page.essay_number or page.sources_used or page.other_bibliography %}
 <hr/>
-
-<div class="row">
-  <div class="col-md-6">
-    <dl>
-    {% if page.collection %}
-    <dt>Collection:</dt>
-    <dd>{{ page.collection }} {{ page.accession_number }}</dd>
-    <dd>{{ page.collection_history }}</dd>
-    {% endif %}
-      
-    {% if page.donor %}
-    <dt>Donor:</dt>
-    <dd>{{ page.donor }}</dd>
-    {% endif %}
-      
-    </dl>
-  </div>
-  <div class="col-md-6">
-
-    {% if page.primary_citation or page.essay_number or page.sources_used or page.other_bibliography %}
-    <h4>Citations and Bibliography</h4>
-    <p>{{ page.primary_citation }}</p>
-    <p>{{ page.essay_number }}</p>
-    <p>{{ page.sources_used }}</p>
-    <p>{{ page.other_bibliography }}</p>
-    {% endif %}
-  </div>
-</div>
+<h4>Citations and Bibliography</h4>
+{% if page.primary_citation %}<p>{{ page.primary_citation }}</p>{% endif %}
+{% if page.essay_number %}<p>{{ page.essay_number }}</p>{% endif %}
+{% if page.sources_used %}<p>{{ page.sources_used }}</p>{% endif %}
+{% if page.other_bibliography %}<p>{{ page.other_bibliography }}</p>{% endif %}
+{% endif %}
+{%- endif -%}

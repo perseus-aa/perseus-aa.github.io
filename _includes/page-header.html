@@ -17,7 +17,7 @@
     {%- capture header_title -%}{{ page.title }}{% if page.objtype %} ({{ page.objtype }}){% endif %}{%- endcapture -%}
     {%- assign header_subtitle = page.summary -%}
 {%- endif -%}
-<header id="page-header" class="page-header-{{ header_mode }} {% if header_mode == 'site' %}container{% else %}container-fluid{% endif %} py-3">
+<header id="page-header" class="page-header-{{ header_mode }} container py-3">
     <div class="d-flex align-items-center">
         {% if site.organization-logo-nav %}<a class="me-3 flex-shrink-0" href="{{ site.organization-link }}" title="{{ site.organization-name }}">
             <img id="page-header-logo" src="{{ site.organization-logo-nav | relative_url }}" alt="{{ site.organization-name | escape }} home" >
