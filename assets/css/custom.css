@@ -189,3 +189,38 @@ dd {
 .item-facts dd p {
     margin: 0;
 }
+
+/* essay_text, converted by _plugins/perseus_markup.rb */
+.essay-title {
+    font-weight: 600;
+    letter-spacing: .03em;
+    margin-bottom: .5rem;
+}
+.item-descriptions .essay-entry h6,
+.item-descriptions [class^="essay-"] > h6 {
+    font-size: .75rem;
+    font-variant: small-caps;
+    letter-spacing: .04em;
+    margin: 1rem 0 .25rem;
+}
+.essay-meta {
+    margin-bottom: .25rem;
+}
+.essay-label {
+    font-variant: small-caps;
+    letter-spacing: .04em;
+}
+.essay-quote {
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--perseus-base-300);
+}
+.essay-milestone {
+    display: none;
+}
+.essay-notes {
+    margin-top: 1rem;
+}
+.see-also {
+    margin-bottom: 0;
+}

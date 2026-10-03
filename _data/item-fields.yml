@@ -12,6 +12,8 @@
 # sections: prose, shown full width below the images, one heading per section
 #   - label: heading
 #     keys:  columns shown under the heading, in order; the section is omitted if all are empty
+#     filter: (optional) essay_markup or see_also_links, to turn embedded markup into HTML
+#             (_plugins/perseus_markup.rb)
 #
 # Citations and bibliography are the same for every type (see metadata.html).
 
@@ -40,7 +42,7 @@ Vase:
     - {label: Material Description, keys: [material_description]}
     - {label: Graffiti, keys: [graffiti, inscriptions]}
     - {label: Notes, keys: [comparanda]}
-    - {label: Essay, keys: [essay_text]}
+    - {label: Essay, keys: [essay_text], filter: essay_markup}
 
 Sculpture:
   facts:
@@ -116,7 +118,7 @@ Building:
     - {label: Evidence for the Architect, keys: [architect_evidence]}
     - {label: Documentary References, keys: [documentary_references]}
     - {label: Notes, keys: [other_notes]}
-    - {label: See Also, keys: [see_also]}
+    - {label: See Also, keys: [see_also], filter: see_also_links}
 
 Gem:
   facts:

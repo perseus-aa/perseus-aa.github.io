@@ -71,8 +71,12 @@
       {%- for key in section.keys -%}
         {%- assign value = page[key] -%}
         {%- if value and value != blank -%}
-          {%- comment %} values that already contain paragraphs are not wrapped again {% endcomment -%}
-          {%- if value contains '<p' or value contains '<P' %}
+          {%- comment %} a section can name a filter (see _plugins/perseus_markup.rb) to turn embedded markup into HTML {% endcomment -%}
+          {%- if section.filter == 'essay_markup' -%}{%- assign value = value | essay_markup -%}
+          {%- elsif section.filter == 'see_also_links' -%}{%- assign value = value | see_also_links -%}
+          {%- endif -%}
+          {%- comment %} values that already contain block elements are not wrapped in a paragraph {% endcomment -%}
+          {%- if value contains '<p' or value contains '<P' or value contains '<ul' or value contains '<div' %}
   {{ value }}
           {%- else %}
   <p>{{ value }}</p>

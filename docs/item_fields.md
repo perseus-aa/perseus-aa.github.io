@@ -16,6 +16,16 @@ type; `_layouts/item/item-page-base.html` includes it twice:
   `{special: collection}` shows the collection, accession number and collection history.
 - `sections` entries are `{label, keys}`. Each key's value is shown under one heading, in order.
   Values that already contain `<p>` are not wrapped again.
+- A section can also name a `filter` that turns markup embedded in the data into HTML
+  (`_plugins/perseus_markup.rb`):
+  - `essay_markup` converts the catalogue-entry markup in `essay_text` (`<P>`, `<I>`, `<Head>`,
+    `<foreign>`, `<PBibRef>`, `<VaseRef>`, `<Note>`, ...). Footnotes (`<Note>`) are numbered and
+    listed after the text. Page breaks of the printed source (`<Milestone>`) are kept as a
+    `data-page` attribute and not shown.
+    Other parts of the entry (collection history, dimensions, condition, decoration) are kept, with
+    small headings, because their text differs from the matching metadata columns.
+  - `see_also_links` turns `<rs type="building">Name</rs>` into a list of links to the matching
+    item pages (matched on `title` or `name`); names with no matching item stay as plain text.
 - A field or section with no value is left out, so a type's list can be generous.
 - Citations and bibliography (`primary_citation`, `essay_number`, `sources_used`,
   `other_bibliography`) are the same for every type and live in `metadata.html`.
