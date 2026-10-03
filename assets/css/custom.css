@@ -164,22 +164,28 @@ dd {
     grid-column-start: 2;
 }
 
-/* item page: facts card (labels above values) and readable prose */
+/* item page: facts card (short facts side by side, labels above values) and readable prose */
 .item-facts dl {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem 1rem;
+}
+.item-facts .fact-wide {
+    grid-column: 1 / -1;
 }
 .item-facts dt {
     font-size: .75rem;
     font-variant: small-caps;
     letter-spacing: .04em;
-    margin: .75rem 0 0;
-}
-.item-facts dt:first-child {
-    margin-top: 0;
+    margin: 0;
 }
 .item-facts dd {
     margin-bottom: 0;
+    overflow-wrap: anywhere;
 }
 .item-descriptions h5 {
     margin-top: 1.5rem;
+}
+.item-facts dd p {
+    margin: 0;
 }

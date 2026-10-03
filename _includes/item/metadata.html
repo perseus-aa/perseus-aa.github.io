@@ -16,8 +16,7 @@
 <div class="card item-facts" id="item-metadata">
   <div class="card-body">
     <dl class="mb-0">
-      <dt>ID:</dt>
-      <dd>{{ page.id }}</dd>
+      <div class="fact"><dt>ID:</dt><dd>{{ page.id }}</dd></div>
 
       {%- for field in profile.facts -%}
         {%- if field.special == 'date' -%}
@@ -25,34 +24,37 @@
             {%- if page.start_date and page.end_date -%}{{ page.start_mod }} {{ page.start_date }} &mdash; {{ page.end_mod }} {{ page.end_date }}{%- else -%}{{ page.unitary_mod }} {{ page.unitary_date }}{%- endif -%}
           {%- endcapture -%}
           {%- assign date_text = date_text | strip -%}
-          {%- if date_text != '' -%}
-      <dt>Date:</dt>
-      <dd>{{ date_text }}</dd>
+          {%- if date_text != '' %}
+      <div class="fact{% if date_text.size > 40 %} fact-wide{% endif %}"><dt>Date:</dt><dd>{{ date_text }}</dd></div>
           {%- endif -%}
         {%- elsif field.special == 'original_or_copy' -%}
           {%- if page.original_or_copy -%}
-      <dt>Original or Copy:</dt>
-            {%- if page.original and page.original != page.original_or_copy and page.original_or_copy contains 'Copy' %}
-      <dd>Copy of {{ page.original }}{% if page.original_or_copy contains '?' %} (uncertain){% endif %}</dd>
-            {%- else %}
-      <dd>{{ page.original_or_copy }}</dd>
-            {%- endif -%}
+            {%- if page.original and page.original != page.original_or_copy and page.original_or_copy contains 'Copy' -%}
+              {%- capture value -%}Copy of {{ page.original }}{% if page.original_or_copy contains '?' %} (uncertain){% endif %}{%- endcapture -%}
+            {%- else -%}
+              {%- assign value = page.original_or_copy -%}
+            {%- endif %}
+      <div class="fact{% if value.size > 16 %} fact-wide{% endif %}"><dt>Original or Copy:</dt><dd>{{ value }}</dd></div>
           {%- endif -%}
         {%- elsif field.special == 'collection' -%}
-          {%- if page.collection -%}
-      <dt>Collection:</dt>
-      <dd>{{ page.collection }} {{ page.accession_number }}</dd>
-            {%- if page.collection_history -%}<dd>{{ page.collection_history }}</dd>{%- endif -%}
+          {%- if page.collection %}
+      <div class="fact fact-wide">
+        <dt>Collection:</dt>
+        <dd>{{ page.collection }} {{ page.accession_number }}</dd>
+        {%- if page.collection_history %}
+        <dd>{{ page.collection_history }}</dd>
+        {%- endif %}
+      </div>
           {%- endif -%}
         {%- else -%}
           {%- assign value = page[field.key] -%}
           {%- if value and value != blank -%}
             {%- assign mod = page[field.mod] -%}
-      <dt>{{ field.label }}:</dt>
-      <dd>{{ mod }} {{ value }}</dd>
+            {%- assign text = mod | append: ' ' | append: value | strip %}
+      <div class="fact{% if text.size > 16 %} fact-wide{% endif %}"><dt>{{ field.label }}:</dt><dd>{{ mod }} {{ value }}</dd></div>
           {%- endif -%}
         {%- endif -%}
-      {%- endfor -%}
+      {%- endfor %}
     </dl>
   </div>
 </div>
