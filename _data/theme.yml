@@ -36,7 +36,7 @@ subjects-stopwords: Perseus;perseus
 ##########
 # LOCATIONS PAGE
 #
-locations-fields: context;region;site,findspot
+locations-fields: context;region;site;findspot
 locations-min: 20
 locations-stopwords:
 
