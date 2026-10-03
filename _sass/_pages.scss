@@ -25,7 +25,7 @@ $toc-a-color: #191919 !default;
 }
 .breadcrumb {
     padding: 0.75rem 1rem;
-    background-color: rgb(248, 249, 250);
+    background-color: var(--perseus-base-300);
     border-radius: 0.25rem;
 }
 .compound-thumb {
@@ -79,7 +79,7 @@ $toc-a-color: #191919 !default;
     min-width: 80px; /* Reduce minimum width */
     height: calc(1.5em + 0.75rem + 2px); /* Match Bootstrap form-control height */
     padding: 1.35rem 0.5rem; /* Reduce padding to save space */
-    border: 1px solid #ced4da;
+    border: 1px solid var(--perseus-base-300);
     border-radius: 0.25rem; /* Add border radius back for consistency */
     font-size: 1rem; /* Match main input font size */
 }
@@ -93,7 +93,8 @@ $toc-a-color: #191919 !default;
 
 .date-separator {
     font-size: 0.875rem;
-    color: #6c757d;
+    color: var(--perseus-base-content);
+    opacity: .7;
     padding: 0 0.25rem;
     white-space: nowrap;
 }
@@ -161,12 +162,12 @@ $toc-a-color: #191919 !default;
     bottom: 0;
     z-index: 99;
     width: 100%;
-    background-color: var(--bs-body-bg);
+    background-color: var(--perseus-base-300);
 }
 #about-toc-title {
     button { 
         width: 100%;
-        background-color: #dedede;
+        background-color: var(--perseus-base-200);
     }
 }
 #about-toc-list {

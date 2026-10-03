@@ -231,3 +231,12 @@ blockquote.quote {
     padding-left: 1rem;
     border-left: 3px solid var(--perseus-base-300);
 }
+
+/* surfaces that Bootstrap paints white: modals and image frames */
+.modal-content,
+.img-thumbnail {
+    background-color: var(--perseus-base-100);
+}
+.img-thumbnail {
+    border-color: var(--perseus-base-300);
+}
