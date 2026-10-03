@@ -241,6 +241,78 @@ blockquote.quote {
     border-color: var(--perseus-base-300);
 }
 
+/* quiet (neutral) outline button, for controls that should not compete with the primary action */
+.btn-quiet {
+    --bs-btn-color: var(--perseus-base-content);
+    --bs-btn-border-color: #c9bdb0;
+    --bs-btn-hover-color: var(--perseus-base-content);
+    --bs-btn-hover-bg: var(--perseus-base-300);
+    --bs-btn-hover-border-color: #b3a597;
+    --bs-btn-active-color: var(--perseus-base-content);
+    --bs-btn-active-bg: var(--perseus-base-300);
+    --bs-btn-active-border-color: #b3a597;
+    color: var(--perseus-base-content);
+    background-color: var(--perseus-base-100);
+    border: 1px solid #c9bdb0;
+}
+.btn-quiet:hover,
+.btn-quiet:focus,
+.btn-quiet:active,
+.btn-quiet.show {
+    color: var(--perseus-base-content);
+    background-color: var(--perseus-base-300);
+    border-color: #b3a597;
+}
+
+/* browse pages: toolbar */
+.browse-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: flex-start;
+}
+.browse-search {
+    flex: 1 1 24rem;
+    min-width: 0;
+}
+.browse-sort {
+    display: flex;
+    gap: .5rem;
+}
+.browse-count {
+    color: var(--perseus-neutral);
+    font-size: .9375rem;
+    margin-bottom: 1rem;
+}
+
+/* active filters */
+.filter-chip {
+    background-color: var(--perseus-base-100);
+    border: 1px solid var(--perseus-base-300);
+    border-radius: var(--perseus-radius-selector);
+    color: var(--perseus-base-content);
+}
+.filter-chip:hover,
+.filter-chip:focus {
+    background-color: var(--perseus-base-300);
+    color: var(--perseus-base-content);
+}
+.filter-chip-and {
+    border-color: var(--perseus-primary);
+    color: var(--perseus-primary-text);
+}
+.filter-chip-or {
+    border-color: var(--perseus-accent);
+    color: #4f52a3;
+}
+.filter-chip-not {
+    border-color: #c8393a;
+    color: #a32d2e;
+}
+.filter-chip-add {
+    border-style: dashed;
+}
+
 /* browse pages: cards, all the same size */
 .browse-card {
     overflow: hidden;

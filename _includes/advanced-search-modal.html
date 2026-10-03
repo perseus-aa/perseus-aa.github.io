@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#advancedSearchModal">
+<button type="button" class="btn btn-quiet" data-bs-toggle="modal" data-bs-target="#advancedSearchModal">
   Advanced<span class="d-none d-md-inline"> Search</span>
 </button>
 <div class="modal fade" id="advancedSearchModal" tabindex="-1">
@@ -14,7 +14,7 @@
             <!-- Initial search rows will be inserted here -->
           </div>
           <div class="mt-3">
-            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addSearchRow()">
+            <button type="button" class="btn btn-quiet btn-sm" onclick="addSearchRow()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
@@ -25,7 +25,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" onclick="submitAdvancedSearch()">Search</button>
       </div>
     </div>
@@ -47,9 +47,9 @@
                 <select class="form-select form-select-sm field-select">
                     <option value="all">All Fields</option>
                     <option value="title">Title</option>
-                    {% for f in site.data.config-browse %}
-                    <option value="{{ f.field }}">{% if f.display_name %}{{ f.display_name }}{% else %}{{ f.field | capitalize }}{% endif %}</option>
-                    {% endfor %}
+                    {% for f in site.data.config-browse %}{% unless f.hidden == 'true' %}
+                    <option value="{{ f.field }}">{{ f.display_name | default: f.field | replace: '_', ' ' | capitalize }}</option>
+                    {% endunless %}{% endfor %}
                 </select>
             </div>
             <div class="col-10 col-md-6">
