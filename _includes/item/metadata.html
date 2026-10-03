@@ -1,6 +1,7 @@
 {% comment %}
 
-    Adds metadata to item pages, based on object type. Called twice by item-page-base:
+    Adds metadata to item pages. Which fields appear, and in what order, depends on the object type
+    and is set in _data/item-fields.yml. Called twice by item-page-base:
 
     - part="facts": the short labeled fields (a card beside the images), plus collection and donor
     - part="descriptions": the long prose fields and the citations (full width, below the images)
@@ -9,6 +10,8 @@
 
 {%- endcomment -%}
 
+{%- assign profile = site.data.item-fields[page.objtype] | default: site.data.item-fields.default -%}
+
 {%- if include.part == 'facts' -%}
 <div class="card item-facts" id="item-metadata">
   <div class="card-body">
@@ -16,305 +19,66 @@
       <dt>ID:</dt>
       <dd>{{ page.id }}</dd>
 
-      {% if page.beazley_number %}
-      <dt>Beazley Number:</dt>
-      <dd>{{ page.beazley_number }}</dd>
-      {% endif %}
-
-      <dt>Type:</dt>
-      <dd>{{ page.objtype }}</dd>
-
-
-      <!-- Dating -->
+      {%- for field in profile.facts -%}
+        {%- if field.special == 'date' -%}
+          {%- capture date_text -%}
+            {%- if page.start_date and page.end_date -%}{{ page.start_mod }} {{ page.start_date }} &mdash; {{ page.end_mod }} {{ page.end_date }}{%- else -%}{{ page.unitary_mod }} {{ page.unitary_date }}{%- endif -%}
+          {%- endcapture -%}
+          {%- assign date_text = date_text | strip -%}
+          {%- if date_text != '' -%}
       <dt>Date:</dt>
-
-      {% if page.start_date and page.end_date %}
-      <dd>{{ page.start_mod }} {{ page.start_date }}  &mdash; {{ page.end_mod }} {{ page.end_date }}</dd>
-      {% else %}
-      <dd>{{ page.unitary_mod }} {{ page.unitary_date }}</dd>
-      {% endif %}
-      
-      {% if page.period %}
-      <dt>Period:</dt>
-      <dd>{{ page.period }}</dd>
-      {% endif %}
-
-      {% if page.periods %}
-      <dt>Periods:</dt>
-      <dd>{{ page.periods }}</dd>
-      {% endif %}
-
-      {% if page.ceramic_phase %}
-      <dt>Ceramic Phase:</dt>
-      <dd>{{ page.ceramic_phase }}</dd>
-      {% endif %}
-
-      {% if page.culture %}
-      <dt>Culture:</dt>
-      <dd>{{ page.culture }}</dd>
-      {% endif %}
-      
-
-
-
-      <!-- Location -->
-      {% if page.context %}
-      <dt>Context:</dt>
-      <dd>{{ page.context_mod }} {{ page.context }}</dd>
-      {% endif %}
-
-      {% if page.findspot %}
-      <dt>Findspot:</dt>
-      <dd>{{ page.findspot_mod}} {{ page.findspot }}</dd>
-      {% endif %}
-      
-      {% if page.region %}
-      <dt>Region:</dt>
-      <dd>{{ page.region }}</dd>
-      {% endif %}
-
-      <!-- Creators -->
-      {% if page.painter %}
-      <dt>Painter:</dt>
-      <dd>{{ page.painter_mod}} {{ page.painter }}</dd>
-      {% endif %}
-
-      {% if page.potter %}
-      <dt>Potter:</dt>
-      <dd>{{ page.potter_mod }} {{ page.potter }}</dd>
-      {% endif %}
-
-      {% if page.attributed_by %}
-      <dt>Attributed By:</dt>
-      <dd>{{ page.attributed_by }}</dd>
-      {% endif %}
-
-      {% if page.sculptor %}
-      <dt>Sculptor:</dt>
-      <dd>{{ page.sculptor_mod}} {{ page.sculptor }}</dd>
-      {% endif %}
-
-      {% if page.architect %}
-      <dt>Architect:</dt>
-      <dd>{{ page.architect_mod}} {{ page.architect }}</dd>
-      {% endif %}
-
-      {% if page.condit %}
-      <dt>Condition:</dt>
-      <dd>{{ page.condit }}</dd>
-      {% endif %}
-      
-      {% if page.scale %}
-      <dt>Scale:</dt>
-      <dd>{{ page.scale_mod}} {{ page.scale }}</dd>
-      {% endif %}
-      
-    
-      {% if page.dimensions %}
-      <dt>Dimensions:</dt>
-      <dd>{{ page.dimensions_mod}} {{ page.dimensions }}</dd>
-      {% endif %}
-
-      {% if page.ware %}
-      <dt>Ware:</dt>
-      <dd>{{ page.ware }}</dd>
-      {% endif %}
-
-      {% if page.shape %}
-      <dt>Shape:</dt>
-      <dd>{{ page.shape }}</dd>
-      {% endif %}
-
-      {% if page.style %}
-      <dt>Style:</dt>
-      <dd>{{ page.style }}</dd>
-      {% endif %}
-
-      {% if page.material %}
-      <dt>Material:</dt>
-      <dd>{{ page.material }}</dd>
-      {% endif %}
-
-      {% if page.function %}
-      <dt>Function:</dt>
-      <dd>{{ page.function }}</dd>
-      {% endif %}
-
-      {% if page.sculpture_type %}
-      <dt>Type:</dt>
-      <dd>{{ page.sculpture_type }}</dd>
-      {% endif %}
-
-      {% if page.site_type %}
-      <dt>Type:</dt>
-      <dd>{{ page.site_type }}</dd>
-      {% endif %}
-
-      {% if page.building_type %}
-      <dt>Type:</dt>
-      <dd>{{ page.building_type }}</dd>
-      {% endif %}
-      
-
-      {% if page.category %}
-      <dt>Category:</dt>
-      <dd>{{ page.category }}</dd>
-      {% endif %}
-
-      {% if page.in_group %}
-      <dt>In Group:</dt>
-      <dd>{{ page.in_group }}</dd>
-      {% endif %}
-
-      {% if page.in_whole %}
-      <dt>In Whole:</dt>
-      <dd>{{ page.in_whole }}</dd>
-      {% endif %}
-      
-      {% if page.assoc_building %}
-      <dt>Associated Building:</dt>
-      <dd>{{ page.assoc_building }}</dd>
-      {% endif %}
-
-      {% if page.denomination %}
-      <dt>Denomination:</dt>
-      <dd>{{ page.denomination }}</dd>
-      {% endif %}
-
-      {% if page.actual_weight %}
-      <dt>Actual Weight:</dt>
-      <dd>{{ page.actual_weight }}</dd>
-      {% endif %}
-
-      {% if page.die_axis %}
-      <dt>Die Axis:</dt>
-      <dd>{{ page.die_axis }}</dd>
-      {% endif %}
-      {% if page.obverse_type %}
-      <dt>Obverse Type:</dt>
-      <dd>{{ page.obverse_type }}</dd>
-      {% endif %}
-      
-      {% if page.obverse_legend %}
-      <dt>Obverse Legend:</dt>
-      <dd>{{ page.obverse_legend }}</dd>
-      {% endif %}
-
-      {% if page.reverse_type %}
-      <dt>Reverse Type:</dt>
-      <dd>{{ page.reverse_type }}</dd>
-      {% endif %}
-      
-      {% if page.reverse_legend %}
-      <dt>Reverse Legend:</dt>
-      <dd>{{ page.reverse_legend }}</dd>
-      {% endif %}
-      
-      {% if page.issuing_authority %}
-      <dt>Issuing Authority:</dt>
-      <dd>{{ page.issuing_authority }}</dd>
-      {% endif %}
-
-
-    {% if page.collection %}
+      <dd>{{ date_text }}</dd>
+          {%- endif -%}
+        {%- elsif field.special == 'original_or_copy' -%}
+          {%- if page.original_or_copy -%}
+      <dt>Original or Copy:</dt>
+            {%- if page.original and page.original != page.original_or_copy and page.original_or_copy contains 'Copy' %}
+      <dd>Copy of {{ page.original }}{% if page.original_or_copy contains '?' %} (uncertain){% endif %}</dd>
+            {%- else %}
+      <dd>{{ page.original_or_copy }}</dd>
+            {%- endif -%}
+          {%- endif -%}
+        {%- elsif field.special == 'collection' -%}
+          {%- if page.collection -%}
       <dt>Collection:</dt>
       <dd>{{ page.collection }} {{ page.accession_number }}</dd>
-      {% if page.collection_history %}<dd>{{ page.collection_history }}</dd>{% endif %}
-    {% endif %}
-
-    {% if page.donor %}
-      <dt>Donor:</dt>
-      <dd>{{ page.donor }}</dd>
-    {% endif %}
-
+            {%- if page.collection_history -%}<dd>{{ page.collection_history }}</dd>{%- endif -%}
+          {%- endif -%}
+        {%- else -%}
+          {%- assign value = page[field.key] -%}
+          {%- if value and value != blank -%}
+            {%- assign mod = page[field.mod] -%}
+      <dt>{{ field.label }}:</dt>
+      <dd>{{ mod }} {{ value }}</dd>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
     </dl>
   </div>
 </div>
 {%- else -%}
 <div id="item-descriptions">
-      {% if page.date_description %}
-      <h5>Date Description</h5>
-      <p>{{ page.date_description }}</p>
-      {% endif %}
-
-      {% if page.shape_description %}
-      <h5>Shape Description</h5>
-      <p>{{ page.shape_description }}</p>
-      {% endif %}
-
-      {% if page.form_style_description %}
-      <h5>Form and Style</h5>
-      <p>{{ page.form_style_description }}</p>
-      {% endif %}
-
-
-      {% if page.decoration_description or page.relief %}
-      <h5>Decoration Description</h5>
-      <p>{{ page.decoration_description }}</p>
-      {% endif %}
-      
-      {% if page.relief %}
-      <p>{{ page.relief }}</p>
-      {% endif %}
-      
-      {% if page.material_description %}
-      <h5>Material Description</h5>
-      <p>{{ page.material_description }}</p>
-      {% endif %}
-      
-      {% if page.graffiti or page.inscriptions %}
-      <h5>Graffiti</h5>
-      <p>{{ page.graffiti }}</p>
-      <p>{{ page.inscriptions }}</p>
-      {% endif %}
-      
-      
-      {% if page.technique_description %}
-      <h5>Technique Description</h5>
-      <p>{{ page.technique_description }}</p>
-      {% endif %}
-      
-      {% if page.subject_description %}
-      <h5>Subject Description</h5>
-      <p>{{ page.subject_description }}</p>
-      {% endif %}
-      
-      {% if page.condition_description %}
-      <h5>Condition Description</h5>
-      <p>{{ page.condition_description }}</p>
-      {% endif %}  
-	
-    {% if page.plan %}
-      <h5>Plan</h5>
-      {{ page.plan }}
-      {% endif %}
-
-    {% if page.history %}
-      <h5>History</h5>
-      {{ page.history }}
-      {% endif %}
-      
-    {% if page.description %}
-    <h5>Description</h5>
-    {{ page.description }}
-    {% endif %}
-
-    {% if page.physical %}
-    <h5>Physical</h5>
-    {{ page.physical }}
-    {% endif %}
-
-    {% if page.exploration %}
-    <h5>Exploration</h5>
-    {{ page.exploration }}
-    {% endif %}
-    
-
-     {% if page.comparanda %}
-    <h5>Notes</h5>
-    {{ page.comparanda }}
-    {% endif %}
-
+  {%- for section in profile.sections -%}
+    {%- assign has_text = false -%}
+    {%- for key in section.keys -%}
+      {%- assign value = page[key] -%}
+      {%- if value and value != blank -%}{%- assign has_text = true -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if has_text %}
+  <h5>{{ section.label }}</h5>
+      {%- for key in section.keys -%}
+        {%- assign value = page[key] -%}
+        {%- if value and value != blank -%}
+          {%- comment %} values that already contain paragraphs are not wrapped again {% endcomment -%}
+          {%- if value contains '<p' or value contains '<P' %}
+  {{ value }}
+          {%- else %}
+  <p>{{ value }}</p>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor %}
 </div>
 
 {% if page.primary_citation or page.essay_number or page.sources_used or page.other_bibliography %}
