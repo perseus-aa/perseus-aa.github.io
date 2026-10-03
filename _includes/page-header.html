@@ -25,8 +25,8 @@
         <div>
             {%- comment -%} the title is the page's <h1> unless the page content already has one (modal titles don't count) {%- endcomment -%}
             {%- assign content_without_modals = content | remove: '<h1 class="modal-title' -%}
-            {% if content_without_modals contains '<h1' %}<p class="page-header-title h3 mb-0">{{ header_title }}</p>{% else %}<h1 class="page-header-title h3 mb-0">{{ header_title }}</h1>{% endif %}
-            {% if header_subtitle %}<p class="lead mb-0">{{ header_subtitle }}</p>{% endif %}
+            {% if content_without_modals contains '<h1' %}<p class="page-header-title h3 mb-0">{{ header_title | strip_html }}</p>{% else %}<h1 class="page-header-title h3 mb-0">{{ header_title | strip_html }}</h1>{% endif %}
+            {% if header_subtitle %}<p class="lead mb-0">{{ header_subtitle | markup | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
         </div>
     </div>
 </header>

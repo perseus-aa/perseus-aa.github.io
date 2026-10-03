@@ -18,7 +18,7 @@
             {% elsif f.external_link == "true" %}
             <a href="{{ child[f.field] }}">{{ child[f.field] }}</a>
             {% else %}
-            {{ child[f.field] | replace: '""','"' }}{% endif %}
+            {{ child[f.field] | replace: '""','"' | markup }}{% endif %}
         </dd>
         {% endif %}{% endfor %}
     </dl>

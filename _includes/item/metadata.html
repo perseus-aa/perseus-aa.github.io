@@ -40,9 +40,9 @@
           {%- if page.collection %}
       <div class="fact fact-wide">
         <dt>Collection:</dt>
-        <dd>{{ page.collection }} {{ page.accession_number }}</dd>
+        <dd>{{ page.collection | markup }} {{ page.accession_number }}</dd>
         {%- if page.collection_history %}
-        <dd>{{ page.collection_history }}</dd>
+        <dd>{{ page.collection_history | markup }}</dd>
         {%- endif %}
       </div>
           {%- endif -%}
@@ -51,7 +51,7 @@
           {%- if value and value != blank -%}
             {%- assign mod = page[field.mod] -%}
             {%- assign text = mod | append: ' ' | append: value | strip %}
-      <div class="fact{% if text.size > 16 %} fact-wide{% endif %}"><dt>{{ field.label }}:</dt><dd>{{ mod }} {{ value }}</dd></div>
+      <div class="fact{% if text.size > 16 %} fact-wide{% endif %}"><dt>{{ field.label }}:</dt><dd>{{ mod }} {{ value | markup }}</dd></div>
           {%- endif -%}
         {%- endif -%}
       {%- endfor %}
@@ -74,6 +74,7 @@
           {%- comment %} a section can name a filter (see _plugins/perseus_markup.rb) to turn embedded markup into HTML {% endcomment -%}
           {%- if section.filter == 'essay_markup' -%}{%- assign value = value | essay_markup -%}
           {%- elsif section.filter == 'see_also_links' -%}{%- assign value = value | see_also_links -%}
+          {%- else -%}{%- assign value = value | markup -%}
           {%- endif -%}
           {%- comment %} values that already contain block elements are not wrapped in a paragraph {% endcomment -%}
           {%- if value contains '<p' or value contains '<P' or value contains '<ul' or value contains '<div' %}
@@ -90,9 +91,9 @@
 {% if page.primary_citation or page.essay_number or page.sources_used or page.other_bibliography %}
 <hr/>
 <h4>Citations and Bibliography</h4>
-{% if page.primary_citation %}<p>{{ page.primary_citation }}</p>{% endif %}
-{% if page.essay_number %}<p>{{ page.essay_number }}</p>{% endif %}
-{% if page.sources_used %}<p>{{ page.sources_used }}</p>{% endif %}
-{% if page.other_bibliography %}<p>{{ page.other_bibliography }}</p>{% endif %}
+{% if page.primary_citation %}<div class="mb-3">{{ page.primary_citation | markup }}</div>{% endif %}
+{% if page.essay_number %}<div class="mb-3">{{ page.essay_number | markup }}</div>{% endif %}
+{% if page.sources_used %}<div class="mb-3">{{ page.sources_used | markup }}</div>{% endif %}
+{% if page.other_bibliography %}<div class="mb-3">{{ page.other_bibliography | markup }}</div>{% endif %}
 {% endif %}
 {%- endif -%}

@@ -16,6 +16,14 @@ type; `_layouts/item/item-page-base.html` includes it twice:
   `{special: collection}` shows the collection, accession number and collection history.
 - `sections` entries are `{label, keys}`. Each key's value is shown under one heading, in order.
   Values that already contain `<p>` are not wrapped again.
+- Every text value on an item page goes through the `markup` filter (`_plugins/perseus_markup.rb`),
+  which converts the markup that survives in the data: `<P>`, `<hi rend="ital">` (italic) and
+  `rend="head"` or `"bold"` (bold), `<I>`, `<bibl>` and the `PBibRef` family, `<rs>`, `<title>`,
+  `<foreign lang=...>` (given a language code), `<quote>`, and the line tags `<lb>`, `<LB>`, `<BR>`
+  and `<L>`, which become line breaks. The source is loose (unquoted attributes, varying case, line
+  tags that are never closed), so only known tags are converted and any other `<...>` is shown as
+  text. That matters because Greek transliteration contains brackets such as `<H( K>`.
+  Greek is still shown as transliterated ASCII (Betacode), not converted to Greek letters.
 - A section can also name a `filter` that turns markup embedded in the data into HTML
   (`_plugins/perseus_markup.rb`):
   - `essay_markup` converts the catalogue-entry markup in `essay_text` (`<P>`, `<I>`, `<Head>`,

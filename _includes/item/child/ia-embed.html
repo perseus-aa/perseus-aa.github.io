@@ -23,5 +23,5 @@
 {% endcomment %}
 {% assign archive_id = child.object_location | split: '/' | last %}
 <div class="{% unless include.height %}ratio ratio-{{ include.ratio | default: '4x3' }}{% endunless %}"{% if include.style %} style="{{ include.style }}"{% endif %}>
-    <iframe title="item embed for {{ child.title | escape }}" src="https://archive.org/embed/{{ archive_id }}" {% if include.height %}class="w-100" height="{{ include.height }}"{% endif %} frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+    <iframe title="item embed for {{ child.title | strip_html | escape }}" src="https://archive.org/embed/{{ archive_id }}" {% if include.height %}class="w-100" height="{{ include.height }}"{% endif %} frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
 </div>`
