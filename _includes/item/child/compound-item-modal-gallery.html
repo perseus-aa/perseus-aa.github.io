@@ -7,9 +7,10 @@
     This include requires the Liquid object "child" to be present! The item display requires the compound object item includes in "item/child/".
 
 {% endcomment %}
-<div class="row row-cols-2 row-cols-lg-4 g-2">
+{%- assign visible_limit = include.limit | default: 12 -%}
+<div class="row row-cols-2 row-cols-md-3 g-2" id="child-grid">
     {% for child in children %}
-    <div class="col">
+    <div class="col{% if forloop.index > visible_limit %} child-extra d-none{% endif %}">
         <div class="card h-100">
             <div class="my-auto">
                 <div class="card-body text-center" id="{{ child.objectid }}Card">
@@ -38,99 +39,6 @@
                         {{ child.display_template | upcase | default: "Item" }} <svg class="bi icon-sprite" fill="currentColor" aria-hidden="true"><use xlink:href="{{ '/assets/lib/cb-icons.svg' | relative_url }}#icon-{{ child.display_template | default: 'file'}}"/></svg>
                     </a> 
 
-                    <!-- child object modal -->
-                    <div class="modal fade" id="{{ child.objectid }}" tabindex="-1" role="dialog" aria-labelledby="{{ child.objectid }}ModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xxl">
-                            <div class="modal-content text-start">
-
-                                <div class="modal-header ">
-                                    <div class="modal-title w-100" id="{{ child.objectid }}ModalLabel">
-                                        <div class="row">
-                                            {% capture stopMedia %}{% if child.display_template == 'video' %}{% if child.object_location contains 'vimeo' %}vimeo{% elsif child.object_location contains 'youtu' %}youtube{% else %}video{% endif %}{% elsif child.display_template == 'audio' %}audio{% else %}{% endif %}{% endcapture %}
-                                            <div class="col-12 text-end">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                                onclick="{% if stopMedia != '' %}stopMedia('{{ child.objectid }}','{{ stopMedia }}');{% endif %}history.pushState('', '', window.location.pathname)"></button>
-                                            </div>
-                                            {% capture next_index %}{% if forloop.index == forloop.length %}0{% else %}{{ forloop.index0 | plus: 1 }}{% endif %}{% endcapture %}
-                                            {% assign next_index = next_index | times: 1 %}
-                                            {% capture prev_index %}{% if forloop.index0 == 0 %}{{ forloop.length | minus: 1 }}{% else %}{{ forloop.index0 | minus: 1 }}{% endif %}{% endcapture %}
-                                            {% assign prev_index = prev_index | times: 1 %}
-                                            {% capture next_item_id %}{{ children[next_index].objectid }}{% endcapture %}
-                                            {% capture prev_item_id %}{{ children[prev_index].objectid }}{% endcapture %}
-                                            <div class="col-1 col-md-2">
-                                                <button data-bs-target="#{{ prev_item_id }}" data-bs-toggle="modal" onclick="{% if stopMedia != '' %}stopMedia('{{ child.objectid }}','{{ stopMedia }}');{% endif %}window.location.hash='{{ prev_item_id }}'" class="btn btn-outline-dark btn-sm prev-child-button" >
-                                                    <svg class="bi icon-sprite" role="img" aria-label="Previous Item">
-                                                        <use xlink:href="{{ '/assets/lib/cb-icons.svg' | relative_url }}#arrow-left"/>
-                                                    </svg>
-                                                    <span class="d-none d-md-inline">Previous Item</span>
-                                                </button>
-                                            </div>
-                                            <div class="col-9 col-md-8 text-center">
-                                                <h3 class="h5">{{ page.title }} 
-                                                    <span class="d-none d-md-inline">-</span><span class="d-md-none"><br></span>
-                                                    Item {{ forloop.index }} of {{ children | size }}
-                                                </h3>
-                                            </div>
-                                            <div class="col-1 col-md-2 text-end">
-                                                <button  data-bs-target="#{{ next_item_id }}" data-bs-toggle="modal" onclick="{% if stopMedia != '' %}stopMedia('{{ child.objectid }}','{{ stopMedia }}');{% endif %}window.location.hash='{{ next_item_id }}'" class="ms-md-5 btn btn-outline-dark btn-sm next-child-button">
-                                                    <span class="d-none d-md-inline">Next Item</span>
-                                                    <svg class="bi icon-sprite" role="img" aria-label="Next Item">
-                                                        <use xlink:href="{{ '/assets/lib/cb-icons.svg' | relative_url }}#arrow-right"/>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="card mb-4 text-center">
-                                                <div class="m-2">
-                                                    {% if child.display_template == 'image' %}
-                                                        {% include item/child/image-gallery.html %}
-                                                    {% elsif child.display_template == 'video' %}
-                                                        {% if child.object_location contains 'vimeo' or child.object_location contains 'youtu' %}
-                                                            {% include item/child/video-embed.html %}
-                                                        {% else %}
-                                                            {% include item/child/video-player.html %}
-                                                        {% endif %}
-                                                    {% elsif child.display_template == 'audio' %}
-                                                        <div class="my-auto">
-                                                            {% include item/child/audio-player.html %}
-                                                        </div>
-                                                    {% elsif child.display_template == 'panorama' %}
-                                                        {% include item/child/panorama.html %}
-                                                    {% else %}
-                                                        {% include item/child/item-thumb.html %}
-                                                    {% endif %}
-                                                </div>
-                                                <div class="my-2">
-                                                    {% include item/child/download-buttons.html %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            {% include item/child/metadata.html %}
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-center mt-4">
-                                        <div class="col-md-5 py-4">
-                                            {% include item/child/citation-box.html %}
-                                        </div>
-                                        {% if child.rights or child.rightsstatement %}
-                                        <div class="col-md-5 py-4">
-                                            {% include item/child/rights-box.html %}
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end child modal -->
 
                 </div>
             </div>
@@ -139,7 +47,122 @@
     {% endfor %}
 </div>
 
+{%- if children.size > visible_limit %}
+<div class="text-center mt-3">
+    <button type="button" id="child-toggle" class="btn btn-outline-secondary btn-sm" aria-expanded="false" aria-controls="child-grid" data-more="Show all {{ children.size }} images" data-less="Show fewer images">Show all {{ children.size }} images</button>
+</div>
+{%- endif %}
+
+{%- comment -%} modals sit outside the grid so that hidden cards do not hide them {%- endcomment %}
+{% for child in children %}
+<!-- child object modal -->
+<div class="modal fade" id="{{ child.objectid }}" tabindex="-1" role="dialog" aria-labelledby="{{ child.objectid }}ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xxl">
+        <div class="modal-content text-start">
+
+            <div class="modal-header ">
+                <div class="modal-title w-100" id="{{ child.objectid }}ModalLabel">
+                    <div class="row">
+                        {% capture stopMedia %}{% if child.display_template == 'video' %}{% if child.object_location contains 'vimeo' %}vimeo{% elsif child.object_location contains 'youtu' %}youtube{% else %}video{% endif %}{% elsif child.display_template == 'audio' %}audio{% else %}{% endif %}{% endcapture %}
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="{% if stopMedia != '' %}stopMedia('{{ child.objectid }}','{{ stopMedia }}');{% endif %}history.pushState('', '', window.location.pathname)"></button>
+                        </div>
+                        {% capture next_index %}{% if forloop.index == forloop.length %}0{% else %}{{ forloop.index0 | plus: 1 }}{% endif %}{% endcapture %}
+                        {% assign next_index = next_index | times: 1 %}
+                        {% capture prev_index %}{% if forloop.index0 == 0 %}{{ forloop.length | minus: 1 }}{% else %}{{ forloop.index0 | minus: 1 }}{% endif %}{% endcapture %}
+                        {% assign prev_index = prev_index | times: 1 %}
+                        {% capture next_item_id %}{{ children[next_index].objectid }}{% endcapture %}
+                        {% capture prev_item_id %}{{ children[prev_index].objectid }}{% endcapture %}
+                        <div class="col-1 col-md-2">
+                            <button data-bs-target="#{{ prev_item_id }}" data-bs-toggle="modal" onclick="{% if stopMedia != '' %}stopMedia('{{ child.objectid }}','{{ stopMedia }}');{% endif %}window.location.hash='{{ prev_item_id }}'" class="btn btn-outline-dark btn-sm prev-child-button" >
+                                <svg class="bi icon-sprite" role="img" aria-label="Previous Item">
+                                    <use xlink:href="{{ '/assets/lib/cb-icons.svg' | relative_url }}#arrow-left"/>
+                                </svg>
+                                <span class="d-none d-md-inline">Previous Item</span>
+                            </button>
+                        </div>
+                        <div class="col-9 col-md-8 text-center">
+                            <h3 class="h5">{{ page.title }} 
+                                <span class="d-none d-md-inline">-</span><span class="d-md-none"><br></span>
+                                Item {{ forloop.index }} of {{ children | size }}
+                            </h3>
+                        </div>
+                        <div class="col-1 col-md-2 text-end">
+                            <button  data-bs-target="#{{ next_item_id }}" data-bs-toggle="modal" onclick="{% if stopMedia != '' %}stopMedia('{{ child.objectid }}','{{ stopMedia }}');{% endif %}window.location.hash='{{ next_item_id }}'" class="ms-md-5 btn btn-outline-dark btn-sm next-child-button">
+                                <span class="d-none d-md-inline">Next Item</span>
+                                <svg class="bi icon-sprite" role="img" aria-label="Next Item">
+                                    <use xlink:href="{{ '/assets/lib/cb-icons.svg' | relative_url }}#arrow-right"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card mb-4 text-center">
+                            <div class="m-2">
+                                {% if child.display_template == 'image' %}
+                                    {% include item/child/image-gallery.html %}
+                                {% elsif child.display_template == 'video' %}
+                                    {% if child.object_location contains 'vimeo' or child.object_location contains 'youtu' %}
+                                        {% include item/child/video-embed.html %}
+                                    {% else %}
+                                        {% include item/child/video-player.html %}
+                                    {% endif %}
+                                {% elsif child.display_template == 'audio' %}
+                                    <div class="my-auto">
+                                        {% include item/child/audio-player.html %}
+                                    </div>
+                                {% elsif child.display_template == 'panorama' %}
+                                    {% include item/child/panorama.html %}
+                                {% else %}
+                                    {% include item/child/item-thumb.html %}
+                                {% endif %}
+                            </div>
+                            <div class="my-2">
+                                {% include item/child/download-buttons.html %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        {% include item/child/metadata.html %}
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-5 py-4">
+                        {% include item/child/citation-box.html %}
+                    </div>
+                    {% if child.rights or child.rightsstatement %}
+                    <div class="col-md-5 py-4">
+                        {% include item/child/rights-box.html %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end child modal -->
+{% endfor %}
+
 <script>
+(function () {
+    const toggle = document.getElementById('child-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('#child-grid .child-extra').forEach(function (el) {
+            el.classList.toggle('d-none', expanded);
+        });
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.textContent = expanded ? toggle.dataset.more : toggle.dataset.less;
+    });
+})();
 function stopMedia(objectid, type) {
     // stop media based on type
     if (type == "audio") {
