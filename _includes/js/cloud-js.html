@@ -11,31 +11,19 @@
 {% endif %}
 {%- assign termsMin = include.min | plus: 0 | default: 1 -%}
 {%- assign cloud_id = include.id | default: "cloud" -%}
-{%- assign cloud-fields = include.fields | split: ";" -%}
-
-{%- comment -%} capture terms from all cloud fields {%- endcomment -%}
-{%- assign terms = "" -%}
-{%- for c in cloud-fields -%}
-{% assign new = items | map: c | compact | join: ";" | split: ";" %}
-{% capture field_terms %}{% for n in new %}{{n}}~{{c}};{% endfor %}{% endcapture %}
-{% assign terms = terms | append: ";" | append: field_terms %}
-{%- endfor -%}
-{%- comment -%} find unique terms and counts {%- endcomment -%}
-{%- assign uniqTerms = terms | downcase | split: ";" | array_count_uniq | sort | where_exp: 't','t[1] >= termsMin' -%}
+{%- comment -%} [term, count, field] for every term that occurs at least `min` times (_plugins/term_counts.rb) {%- endcomment -%}
+{%- assign uniqTerms = items | term_counts: include.fields, termsMin -%}
 
 <script>
 (function(){    
     /* subject terms + count */
     var terms = [
-        {% for t in uniqTerms %}{% assign term_field = t[0] | split: "~" %}[{{ term_field[0] | jsonify }}, {{ t[1] | jsonify }},{{term_field[1] | jsonify}}]{% unless forloop.last %}, {% endunless %}{% endfor %}
+        {% for t in uniqTerms %}[{{ t[0] | jsonify }}, {{ t[1] | jsonify }}, {{ t[2] | jsonify }}]{% unless forloop.last %}, {% endunless %}{% endfor %}
     ];
 
     {% if include.stopwords %}/* apply stopwords */
     var stopWords = {{ include.stopwords | downcase | split: ';' | jsonify }};
-    terms = terms.filter(function(a) { return stopWords.indexOf(a[0]) < 0;});{% endif %}
-    /* calculate max size */
-    var counts = terms.map(function(obj){ return obj[1]; });
-    var countMax = counts.reduce(function(a, b) { return Math.max(a, b); });
+    terms = terms.filter(function(a) { return stopWords.indexOf(a[0].toLowerCase()) < 0;});{% endif %}
     var cloud = document.getElementById("{{ cloud_id }}");
     {% if include.shuffle == true %}
     /* Fisher-Yates shuffle https://bost.ocks.org/mike/shuffle/ */
@@ -51,17 +39,28 @@
     }
     {% endif %}
 
-    function mapSize(x) { return Math.round(x * 9 / countMax + 1); }
-    /* create cloud */
+    var fieldOrder = {{ include.fields | split: ";" | jsonify }};
+    function label(field) { var f = field.replace(/_/g, " "); return f.charAt(0).toUpperCase() + f.slice(1); }
+    function escapeHtml(t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+    /* create cloud: one group per field, in the order of the configured fields; sizes run from 1 (least frequent) to 10 (most frequent term of any field), by square root so that a few very common terms do not shrink the rest */
     function makeGrid(array) {
-        var i, size;
-        var items = "";
-        {% if include.shuffle == true %}shuffle(array);{% endif %}
-        for (let i = 0; i < array.length; i++) {
-            size = mapSize(array[i][1]);
-            items += '<a class="btn btn-{{ include.button | default: "outline-primary" }} m-2 tagcloud' + size + '" href="{{ "/browse.html" | relative_url }}#' + array[i][2] + ':' + encodeURIComponent(array[i][0]) + '" >' + array[i][0] + '</a>';
-        }
-        cloud.innerHTML = items;
+        var html = "";
+        var max = array.reduce(function (m, t) { return Math.max(m, t[1]); }, 1);
+        fieldOrder.forEach(function (field) {
+            var group = array.filter(function (t) { return t[2] === field; });
+            if (!group.length) return;
+            {% if include.shuffle == true %}shuffle(group);{% endif %}
+            html += '<section class="cloud-group">';
+            if (fieldOrder.length > 1) html += '<h2 class="cloud-group-title">' + escapeHtml(label(field)) + '</h2>';
+            html += '<div class="cloud-terms">';
+            group.forEach(function (t) {
+                var size = Math.round(Math.sqrt(t[1] / max) * 9 + 1);
+                html += '<a class="cloud-term" style="--size:' + size + '" href="{{ "/browse.html" | relative_url }}#' + field + ':' + encodeURIComponent(t[0]) + '" title="' + t[1] + (t[1] === 1 ? ' item' : ' items') + '">' + escapeHtml(t[0]) + '</a>';
+            });
+            html += '</div></section>';
+        });
+        cloud.innerHTML = html;
     }
     makeGrid(terms);
 
