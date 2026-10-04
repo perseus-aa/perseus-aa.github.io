@@ -1,7 +1,15 @@
+{% comment %}
+    The items to browse: the objects of one type on a type page, otherwise all objects. With
+    browse-child-objects: true (theme.yml), the rows without an object type are listed too (the child
+    images of the compound objects and the images that no object lists), which makes this page
+    about ten times larger.
+{% endcomment %}
 {% if page.objtype != nil %}
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid and item.objtype == page.objtype' -%}
-{% else %}
+{% elsif site.data.theme.browse-child-objects == true %}
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
+{% else %}
+{%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid and item.objtype' -%}
 {% endif %}
 
 

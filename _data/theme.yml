@@ -87,7 +87,7 @@ metadata-facets-fields: "objtype,ware,period,region,context"
 map-child-objects: true 
 timeline-child-objects: true 
 data-child-objects: true 
-browse-child-objects: true
+browse-child-objects: false # false: the browse page lists only the objects (see _includes/js/browse-js.html)
 search-child-objects: true
 
 
