@@ -66,7 +66,7 @@ var loadingIcon, filterTextBox, browseItemsDiv;
 function makeCard(obj) {
     const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E";
     const itemHref = `{{ '/items/' | relative_url }}${ obj.parent ? obj.parent + ".html#" + obj.id : obj.id + ".html"}`;
-    const filterHref = (field, value) => `{{ page.url | relative_url }}#${field}:${encodeURIComponent(value)}`;
+    const filterHref = (field, value) => `{{ page.url | relative_url }}#${field}:${encodeURIComponent('"' + value + '"')}`;
 
     let card = '<div class="item col-6 col-md-4 col-lg-3"><div class="card browse-card h-100">';
 
@@ -282,14 +282,19 @@ function itemMatches(item, field, query, startDate, endDate) {
         return fieldValues.some(value => isDateInRange(value.trim(), startDate, endDate));
     }
     
-    // Text search
+    // Text search. A query in double quotes ("Archaic") matches a whole term of the field (terms are
+    // separated by semicolons) instead of any text that contains it: the links on the home page and on
+    // the cards use this form, so that "Archaic" does not also find "Late Archaic".
     if (query && query !== "") {
-        const q = query.trim().toUpperCase();
-        
+        const parsed = parseQuery(query);
+        const q = parsed.text;
+        const matches = value => parsed.exact ? value.trim().toUpperCase() === q : value.toUpperCase().includes(q);
+
         // Search all fields 
         if (field === "all") {
             for (let k in item) {
-                if (k !== "img" && item[k] && item[k].toString().toUpperCase().includes(q)) {
+                if (k === "img" || !item[k]) continue;
+                if (parsed.exact ? item[k].toString().split(";").some(matches) : matches(item[k].toString())) {
                     return true;
                 }
             }
@@ -299,11 +304,22 @@ function itemMatches(item, field, query, startDate, endDate) {
         // Search specific field
         if (item[field]) {
             const fieldValues = item[field].toString().split(";");
-            return fieldValues.some(value => value.trim().toUpperCase().includes(q));
+            return fieldValues.some(value => matches(value.trim()));
         }
     }
     
     return false;
+}
+
+/**
+ * A query in double quotes is an exact (whole term) match
+ */
+function parseQuery(query) {
+    const q = query.trim();
+    if (q.length > 1 && q.startsWith('"') && q.endsWith('"')) {
+        return { exact: true, text: q.slice(1, -1).trim().toUpperCase() };
+    }
+    return { exact: false, text: q.toUpperCase() };
 }
 
 /**
@@ -521,7 +537,9 @@ function handleHashChange() {
     let query = hash;
 
     if (hash.includes(":")) {
-        const [potentialField, hashQuery] = hash.split(":");
+        const colon = hash.indexOf(":");
+        const potentialField = hash.slice(0, colon);
+        const hashQuery = hash.slice(colon + 1); // a term can contain a colon ("Free-standing statue: kouros")
         if (validFields.includes(potentialField)) {
             field = potentialField;
             query = hashQuery;
@@ -711,7 +729,7 @@ function displayActiveFilters(searchCriteria) {
             criteria.field.charAt(0).toUpperCase() + criteria.field.slice(1).replace(/_/g, ' ');
         
         // Format display value for dates
-        let displayValue = criteria.value;
+        let displayValue = criteria.value.replace(/^"(.*)"$/, '$1');
         if (isDateField(criteria.field) && (criteria.startDate || criteria.endDate)) {
             if (criteria.startDate && criteria.endDate) {
                 displayValue = `${criteria.startDate} to ${criteria.endDate}`;

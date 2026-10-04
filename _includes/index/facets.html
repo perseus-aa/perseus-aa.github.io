@@ -18,7 +18,7 @@
                 <h3 class="facet-title">{{ field | replace: '_', ' ' | capitalize }}</h3>
                 <ul class="facet-list list-unstyled mb-0">
                     {%- for t in terms limit: facet_top %}
-                    {%- assign enc = t[0] | url_param_escape %}
+                    {%- assign enc = t[0] | prepend: '"' | append: '"' | url_param_escape %}
                     <li><a href="{{ '/browse.html#' | append: field | append: ':' | append: enc | relative_url }}">{{ t[0] }}</a> <span class="facet-count">{{ t[1] | with_delimiter }}</span></li>
                     {%- endfor %}
                 </ul>
@@ -27,7 +27,7 @@
                     <summary>All {{ terms.size }} terms</summary>
                     <ul class="facet-list list-unstyled mt-2 mb-0">
                         {%- for t in terms offset: facet_top %}
-                        {%- assign enc = t[0] | url_param_escape %}
+                        {%- assign enc = t[0] | prepend: '"' | append: '"' | url_param_escape %}
                     <li><a href="{{ '/browse.html#' | append: field | append: ':' | append: enc | relative_url }}">{{ t[0] }}</a> <span class="facet-count">{{ t[1] | with_delimiter }}</span></li>
                         {%- endfor %}
                     </ul>
