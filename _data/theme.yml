@@ -21,6 +21,17 @@ default-sort-field: objtype
 
 
 ##########
+# HOME PAGE FACETS
+#
+# facets shown on the home page: metadata fields, separated by semicolons
+home-facets: period;material;region
+# a term is listed only if it occurs at least this many times in the collection.
+# 2 is for developing against the small sample; use 20 with the full metadata
+home-facets-min: 2
+# terms shown before the "all N terms" expander
+home-facets-top: 8
+
+##########
 # ITEM PAGE
 #
 # see _data/metadata-config.csv to define the metadata fields that will display.

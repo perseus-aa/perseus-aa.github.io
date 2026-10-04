@@ -1,17 +1,17 @@
 ---
-# Default home page with boxes providing collection stats
+# Home page: introduction, the object types, and a facet browser
 layout: page
 ---
-<div class="row">
-  <div class="col-md-6">
-    {% include index/description.html %}
-  </div>
-  <div class="col-md-6">
-    {% include index/carousel.html %}
-  </div>
+<div class="mb-4">
+  {% include index/description.html %}
 </div>
-<!-- <div class="row"> -->
-<!--   <div class="col-md-12"> -->
-<!--     {% include index/data-download.html %} -->
-<!--   </div> -->
-<!-- </div> -->
+
+<h2 class="h4">Browse by object type</h2>
+<div class="mb-5">
+  {% include index/type-tiles.html %}
+</div>
+
+<h2 class="h4">Browse by facet</h2>
+<div class="mb-4">
+  {% include index/facets.html %}
+</div>

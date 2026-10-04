@@ -1,0 +1,21 @@
+{% comment %}
+
+    Home page: one tile for each object type, with its number of objects and a sample image.
+    Each tile links to the browse page for that type (/vases.html, /sculptures.html, ...).
+
+{%- endcomment -%}
+{%- assign types = site.data[site.metadata] | type_counts -%}
+<div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-6" id="object-types">
+    {%- for t in types %}
+    {%- assign type_page = t[0] | downcase | append: 's' -%}
+    <div class="col">
+        <a class="card browse-card h-100 text-decoration-none" href="{{ type_page | prepend: '/' | append: '.html' | relative_url }}">
+            <span class="browse-thumb{% unless t[2] %} browse-thumb-empty{% endunless %}">{% if t[2] %}<img class="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="{{ t[2] }}" alt="">{% endif %}</span>
+            <span class="card-body">
+                <span class="browse-title d-block">{{ t[0] }}s</span>
+                <span class="browse-collection d-block">{{ t[1] | with_delimiter }} objects</span>
+            </span>
+        </a>
+    </div>
+    {%- endfor %}
+</div>

@@ -1,16 +1,40 @@
 # frozen_string_literal: true
 
-# Counts the terms in one or more metadata fields, for the Subjects and Locations clouds.
+# Counts for the home page: the terms in metadata fields, and the object types.
 #
-#   {{ items | term_counts: "period;material", 20 }}
+#   {{ items | facet_terms: "period", 20 }}     [[term, count], ...] for one field, most frequent first
+#   {{ items | type_counts }}                   [[objtype, count, image], ...], most frequent first
+#   {{ 1471 | with_delimiter }}                 1,471
+#   {{ items | term_counts: "period;material", 20 }}   [[term, count, field], ...] sorted by field and term
 #
-# returns [[term, count, field], ...] sorted by field and term. Terms in a field are separated by
-# semicolons. Terms are matched without regard to case and surrounding space, and a term that
-# occurs in different fields is counted per field. The form shown is the most frequent spelling,
+# Terms in a field are separated by semicolons. Terms are matched without regard to case and
+# surrounding space, and a term that occurs in different fields is counted per field. The form shown is the most frequent spelling,
 # so "Attic Red Figure" is not shown as "attic red figure". Only terms that occur at least `min`
 # times are returned.
 
 module PerseusTermCounts
+  def facet_terms(items, field, min = 1)
+    term_counts(items, field, min).map { |term, count, _field| [term, count] }
+                                  .sort_by { |term, count| [-count, term.downcase] }
+  end
+
+  # the object types (objects only, not their child images), with a sample image for each
+  def type_counts(items)
+    types = Hash.new { |h, k| h[k] = { count: 0, image: nil } }
+    Array(items).each do |item|
+      type = item['objtype'].to_s
+      next if type.empty?
+
+      types[type][:count] += 1
+      types[type][:image] ||= item['image_small'].to_s unless item['image_small'].to_s.empty?
+    end
+    types.map { |type, v| [type, v[:count], v[:image]] }.sort_by { |type, count, _| [-count, type] }
+  end
+
+  def with_delimiter(number)
+    number.to_i.to_s.reverse.scan(/\d{1,3}/).join(',').reverse
+  end
+
   def term_counts(items, fields, min = 1)
     fields = fields.to_s.split(';').map(&:strip).reject(&:empty?)
     min = min.to_i

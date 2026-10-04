@@ -464,3 +464,52 @@ a.browse-tag:focus {
 .cloud-term[style*="--size:10"] {
     color: var(--perseus-primary-text);
 }
+
+/* home page: facet browser */
+.facet-title {
+    margin: 0 0 .75rem;
+    font-size: .8125rem;
+    font-variant: small-caps;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: var(--perseus-neutral);
+}
+.facet-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .2rem 0;
+    border-bottom: 1px solid var(--perseus-base-200);
+}
+.facet-list li:last-child {
+    border-bottom: 0;
+}
+.facet-list a {
+    color: var(--perseus-base-content);
+    text-decoration: none;
+}
+.facet-list a:hover,
+.facet-list a:focus {
+    color: var(--perseus-primary-text);
+    text-decoration: underline;
+}
+.facet-count {
+    color: var(--perseus-neutral);
+    font-size: .875rem;
+    font-variant-numeric: tabular-nums;
+}
+.facet-more summary {
+    cursor: pointer;
+    color: var(--perseus-primary-text);
+    font-size: .875rem;
+}
+a.browse-card {
+    color: var(--perseus-base-content);
+}
+a.browse-card:hover .browse-title {
+    color: var(--perseus-primary-text);
+    text-decoration: underline;
+}
+a.browse-card .browse-collection {
+    color: var(--perseus-neutral);
+}

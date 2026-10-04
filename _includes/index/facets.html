@@ -1,0 +1,41 @@
+{% comment %}
+
+    Home page: facet browser. For each field in `home-facets` (_data/theme.yml), the most frequent
+    terms with their counts, and the rest in an expander. Each term links to the browse page
+    filtered on that term. Terms and counts are worked out at build time (_plugins/term_counts.rb).
+
+{%- endcomment -%}
+{%- assign facet_fields = site.data.theme.home-facets | split: ';' -%}
+{%- assign facet_min = site.data.theme.home-facets-min | default: 1 -%}
+{%- assign facet_top = site.data.theme.home-facets-top | default: 8 -%}
+<div class="row g-3" id="facets">
+    {%- for field in facet_fields %}
+    {%- assign terms = site.data[site.metadata] | facet_terms: field, facet_min -%}
+    {%- if terms.size > 0 %}
+    <div class="col-lg-4">
+        <section class="card facet-card h-100">
+            <div class="card-body">
+                <h3 class="facet-title">{{ field | replace: '_', ' ' | capitalize }}</h3>
+                <ul class="facet-list list-unstyled mb-0">
+                    {%- for t in terms limit: facet_top %}
+                    {%- assign enc = t[0] | url_param_escape %}
+                    <li><a href="{{ '/browse.html#' | append: field | append: ':' | append: enc | relative_url }}">{{ t[0] }}</a> <span class="facet-count">{{ t[1] | with_delimiter }}</span></li>
+                    {%- endfor %}
+                </ul>
+                {%- if terms.size > facet_top %}
+                <details class="facet-more mt-2">
+                    <summary>All {{ terms.size }} terms</summary>
+                    <ul class="facet-list list-unstyled mt-2 mb-0">
+                        {%- for t in terms offset: facet_top %}
+                        {%- assign enc = t[0] | url_param_escape %}
+                    <li><a href="{{ '/browse.html#' | append: field | append: ':' | append: enc | relative_url }}">{{ t[0] }}</a> <span class="facet-count">{{ t[1] | with_delimiter }}</span></li>
+                        {%- endfor %}
+                    </ul>
+                </details>
+                {%- endif %}
+            </div>
+        </section>
+    </div>
+    {%- endif %}
+    {%- endfor %}
+</div>
