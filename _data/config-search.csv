@@ -1,6 +1,6 @@
 field,index,display
 id,false,false
-objectid,false,false
+objectid,true,false
 parentid,false,false
 objtype,false,true
 title,false,true
@@ -57,7 +57,7 @@ graffiti,false,false
 history,false,false
 human_name,false,false
 image,false,false
-images,false,false
+images,true,false
 in_group,false,false
 in_whole,false,false
 inscription,true,false
@@ -113,3 +113,4 @@ technique_description,true,false
 unitary_date,false,false
 unitary_mod,false,false
 ware,false,false
+image_id,true,false
