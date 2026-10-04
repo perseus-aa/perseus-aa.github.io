@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+require 'erb'
+
 # Counts for the home page: the terms in metadata fields, and the object types.
 #
 #   {{ items | facet_terms: "period", 20 }}     [[term, count], ...] for one field, most frequent first
 #   {{ items | type_counts }}                   [[objtype, count, image], ...], most frequent first
 #   {{ 1471 | with_delimiter }}                 1,471
+#   {{ "Late Classical" | url_param_escape }}    Late%20Classical, for use after the # of a browse link
 #   {{ items | term_counts: "period;material", 20 }}   [[term, count, field], ...] sorted by field and term
 #
 # Terms in a field are separated by semicolons. Terms are matched without regard to case and
@@ -29,6 +32,12 @@ module PerseusTermCounts
       types[type][:image] ||= item['image_small'].to_s unless item['image_small'].to_s.empty?
     end
     types.map { |type, v| [type, v[:count], v[:image]] }.sort_by { |type, count, _| [-count, type] }
+  end
+
+  # Collection Builder's templates use this filter, but Jekyll does not define it, so the value was
+  # passed through unchanged. This is the same escaping as encodeURIComponent in the browse page.
+  def url_param_escape(input)
+    ERB::Util.url_encode(input.to_s)
   end
 
   def with_delimiter(number)

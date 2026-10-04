@@ -69,6 +69,12 @@ organization-logo-nav: /assets/img/perseus-running-man.png
 # JEKYLL_ENV=production jekyll build
 # (this is done automatically by gh-pages build)
 #
+# an unknown Liquid filter is an error, not silently ignored. The site depends on the filters in _plugins/
+# (markup, facet_terms, ...); without this, a server that was started before a plugin was added, or a
+# build that does not run plugins, produces blank cards and links to /s.html
+liquid:
+  strict_filters: true
+
 # ignore stuff
 exclude: [docs/, Rakefile, rakelib/, README.md, LICENSE, CITATION.cff, CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md]
 # compress CSS output
