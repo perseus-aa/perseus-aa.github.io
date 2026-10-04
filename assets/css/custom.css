@@ -418,53 +418,6 @@ a.browse-tag:focus {
     background-color: var(--perseus-base-300);
 }
 
-/* Subjects and Locations: term clouds, one group per field. Size follows frequency across the page (--size is 1 to 10). */
-.term-cloud {
-    padding: 1rem 1.5rem 1.5rem;
-    background-color: var(--perseus-base-100);
-    border: var(--perseus-border);
-    border-radius: var(--perseus-radius-box);
-}
-.cloud-group {
-    padding: 1rem 0;
-}
-.cloud-group + .cloud-group {
-    border-top: var(--perseus-border);
-}
-.cloud-group-title {
-    margin: 0 0 .5rem;
-    font-size: .8125rem;
-    font-variant: small-caps;
-    font-weight: 600;
-    letter-spacing: .06em;
-    color: var(--perseus-neutral);
-}
-.cloud-terms {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: .125rem 1.25rem;
-    line-height: 1.3;
-}
-.cloud-term {
-    font-size: calc(.9375rem + (var(--size, 1) - 1) * .125rem);
-    font-weight: 500;
-    color: var(--perseus-neutral);
-    text-decoration: none;
-}
-.cloud-term:hover,
-.cloud-term:focus {
-    color: var(--perseus-primary-text);
-    text-decoration: underline;
-    text-underline-offset: .2em;
-}
-/* the most frequent terms are set in the primary color */
-.cloud-term[style*="--size:8"],
-.cloud-term[style*="--size:9"],
-.cloud-term[style*="--size:10"] {
-    color: var(--perseus-primary-text);
-}
-
 /* home page: facet browser */
 .facet-title {
     margin: 0 0 .75rem;

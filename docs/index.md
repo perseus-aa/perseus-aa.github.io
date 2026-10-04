@@ -20,7 +20,6 @@ color_theme.md
 ## Page Details
 
 item_pages.md
-cloud.md
 data.md
 maps.md
 navbar.md

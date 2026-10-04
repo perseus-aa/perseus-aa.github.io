@@ -38,15 +38,17 @@ home-facets-top: 8
 browse-buttons: false # true / false, adds previous/next arrows to items, but increases build time
 
 ##########
-# SUBJECTS PAGE
+# SUBJECTS AND LOCATIONS DATA FILES
 #
+# These pages are gone (the home page has a facet browser, see home-facets above), but the
+# fields below still define the downloads assets/data/subjects.* and assets/data/locations.*
+#
+# SUBJECTS
 subjects-fields: building_type;ceramic_phase;material;object_function;painter;period;periods;sculptor;shape;sculpture_type;site_type;style;technique;ware;
 subjects-min: 20
 subjects-stopwords: Perseus;perseus
 
-##########
-# LOCATIONS PAGE
-#
+# LOCATIONS
 locations-fields: context;region;site;findspot
 locations-min: 20
 locations-stopwords:
