@@ -7,18 +7,8 @@ gallery: true
 custom-foot: js/modal-hash-js.html
 ---
 {% assign objectid = page.objectid %}
-{% assign children = "" | split: "" %}
-
-{% for item in site.data[site.metadata] %}
-{% assign parents = item.parentid | split: ',' %}
-{% assign childid = item.objectid %}
-
-{% if parents contains objectid %}
-
-{% assign children = children | push: item %}
-{% endif %}
-
-{% endfor %}
+{% comment %} the rows whose parentid lists this object (_plugins/children_of.rb) {% endcomment %}
+{% assign children = site.data[site.metadata] | children_of: objectid %}
 
 <div class="mb-4 ">
     
