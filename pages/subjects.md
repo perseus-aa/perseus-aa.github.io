@@ -1,13 +1,19 @@
 ---
 title: Subjects
-layout: cloud
+layout: null
 permalink: /subjects.html
-# Default subject page is configured in "_data/theme.yml"
-# leave cloud-fields as "site.data.theme.subjects-fields"
-cloud-fields: site.data.theme.subjects-fields
+sitemap: false
 ---
-
-## Browse Subjects
-
-Use this word cloud visualization to browse terms and subjects.
-Word size is determined by frequency and all words link to a corresponding collection search.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Subjects</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={{ '/#facets' | relative_url }}">
+<link rel="canonical" href="{{ '/' | absolute_url }}">
+</head>
+<body>
+<p>The subjects are now part of the <a href="{{ '/#facets' | relative_url }}">facet browser on the home page</a>.</p>
+</body>
+</html>

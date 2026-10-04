@@ -1,13 +1,19 @@
 ---
 title: Locations
-layout: cloud
+layout: null
 permalink: /locations.html
-# Default locations page is configured in "_data/theme.yml"
-# leave cloud-fields as "site.data.theme.locations-fields"
-cloud-fields: site.data.theme.locations-fields
+sitemap: false
 ---
-
-## Browse Locations
-
-Use this word cloud visualization to browse locations.
-Word size is determined by frequency and all words link to a corresponding collection search.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Locations</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={{ '/#facets' | relative_url }}">
+<link rel="canonical" href="{{ '/' | absolute_url }}">
+</head>
+<body>
+<p>The locations are now part of the <a href="{{ '/#facets' | relative_url }}">facet browser on the home page</a>.</p>
+</body>
+</html>
