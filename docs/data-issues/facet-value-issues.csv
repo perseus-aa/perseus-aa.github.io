@@ -1,0 +1,133 @@
+issue,field,value,objects,related value,related objects,example ids,suggestion
+markup in value,context,Athens (from the pyre of a grave near the Acharnian Gate).<lb>Lid restored from,1,,,aa_3955,remove the <P> tags
+markup in value,context,From near Herion according to <bibl>Grossman 1959</bibl> (305),1,,,aa_5815,remove the <P> tags
+markup in value,periods,<P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,12,,,aa_3884 aa_3887 aa_3898 aa_3910,remove the <P> tags
+markup in value,periods,<P>Archaic</P><P>Classical</P><P>Hellenistic</P>,7,,,aa_3899 aa_3900 aa_3913 aa_3943,remove the <P> tags
+markup in value,periods,<P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,6,,,aa_3877 aa_3882 aa_3890 aa_3892,remove the <P> tags
+markup in value,periods,<P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,5,,,aa_3889 aa_3895 aa_3914 aa_3917,remove the <P> tags
+markup in value,periods,<P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P>,3,,,aa_3932 aa_3934 aa_3938,remove the <P> tags
+markup in value,periods,<P>Classical</P><P>Hellenistic</P><P>Roman</P>,3,,,aa_3879 aa_3904 aa_3905,remove the <P> tags
+markup in value,periods,<P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P>,3,,,aa_3886 aa_3896 aa_3909,remove the <P> tags
+markup in value,periods,<P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P>,3,,,aa_3893 aa_3927 aa_3936,remove the <P> tags
+markup in value,periods,<P>Hellenistic</P>,3,,,aa_3901 aa_3908 aa_3928,remove the <P> tags
+markup in value,periods,<P>Middle Bronze Age</P><P>Late Bronze Age</P>,3,,,aa_3878 aa_3903 aa_3912,remove the <P> tags
+markup in value,periods,<P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P>,2,,,aa_3880 aa_3922,remove the <P> tags
+markup in value,periods,<P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P><P>Modern</P>,2,,,aa_3883 aa_3945,remove the <P> tags
+markup in value,periods,<P>Hellenistic</P><P>Roman</P>,2,,,aa_3931 aa_3948,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P>,2,,,aa_3881 aa_3920,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P><P>Modern</P>,2,,,aa_3875 aa_3885,remove the <P> tags
+markup in value,periods,<P>Archaic</P><P>Classical</P>,1,,,aa_3897,remove the <P> tags
+markup in value,periods,<P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P><P>Modern</P>,1,,,aa_3918,remove the <P> tags
+markup in value,periods,<P>Archaic</P><P>Classical</P><P>Roman</P><P>Byzantine</P><P>Geometric</P>,1,,,aa_3873,remove the <P> tags
+markup in value,periods,<P>Classical</P>,1,,,aa_3874,remove the <P> tags
+markup in value,periods,<P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P><P>Modern</P>,1,,,aa_3923,remove the <P> tags
+markup in value,periods,<P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P><P>Modern</P>,1,,,aa_3924,remove the <P> tags
+markup in value,periods,<P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,1,,,aa_3930,remove the <P> tags
+markup in value,periods,<P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,1,,,aa_3907,remove the <P> tags
+markup in value,periods,<P>Geometric</P><P>Archaic</P><P>Classical</P>,1,,,aa_3876,remove the <P> tags
+markup in value,periods,<P>Late Bronze Age</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,1,,,aa_3937,remove the <P> tags
+markup in value,periods,<P>Late Bronze Age</P><P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P>,1,,,aa_3911,remove the <P> tags
+markup in value,periods,<P>Late Bronze Age</P><P>Geometric</P><P>Dark Age</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P>,1,,,aa_3919,remove the <P> tags
+markup in value,periods,<P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Dark Age</P><P>Geometric</P>,1,,,aa_3929,remove the <P> tags
+markup in value,periods,<P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Dark Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P>,1,,,aa_3894,remove the <P> tags
+markup in value,periods,<P>Neolithic</P>,1,,,aa_3891,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Archaic</P><P>Classical</P>,1,,,aa_3949,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Early Bronze Age</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P><P>Roman</P><P>Byzantine</P>,1,,,aa_3888,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Early Bronze Age</P><P>Middle Bronze Age</P>,1,,,aa_3902,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P>,1,,,aa_3915,remove the <P> tags
+markup in value,periods,<P>Neolithic</P><P>Early Bronze Age</P><P>Middle Bronze Age</P><P>Late Bronze Age</P><P>Geometric</P><P>Archaic</P><P>Classical</P><P>Hellenistic</P>,1,,,aa_3906,remove the <P> tags
+"same term, different spelling",context,"Athenian Agora, Grave 16:6",1,Athenian Agora Grave 16:6,1,aa_4268,"use one spelling, probably ""Athenian Agora Grave 16:6"""
+"same term, different spelling",painter,Jena Painter and his workshop,1,Jena Painter and his Workshop,1,aa_5740,"use one spelling, probably ""Jena Painter and his Workshop"""
+"same term, different spelling",shape,kylix,2,Kylix,201,aa_5594 aa_5737,"use one spelling, probably ""Kylix"""
+"same term, different spelling",site_type,Fortified City,1,Fortified city,34,aa_3923,"use one spelling, probably ""Fortified city"""
+"same term, different spelling",style,High Classical],1,High Classical,374,aa_3557,"use one spelling, probably ""High Classical"""
+stray character,sculptor,[Poly]medes of Argos,1,,,aa_2120,check for a typo or stray punctuation
+stray character,shape,"""Pontic"" oinochoe",1,,,aa_4192,check for a typo or stray punctuation
+stray character,style,High Classical],1,,,aa_3557,check for a typo or stray punctuation
+possible typo,collection,"Museum of Fine Arts, Houston",2,"Museum of Fine Arts, Boston",1588,aa_5286 aa_5287,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,collection,"London, Britsh Museum",1,"London, British Museum",279,aa_5826,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,context,Kamiros,2,Kameiros,9,aa_4167 aa_4168,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,context,Larisa,2,Larissa,9,aa_2711 aa_2892,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,painter,Tysczkiewicz Painter,1,Tyszkiewicz Painter,3,aa_5818,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,region,Western Mediterranean,2,Eastern Mediterranean,22,aa_2080 aa_3719,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,site_type,Unfortified city,2,Fortified city,34,aa_3900 aa_3917,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+possible typo,ware,Boeotian Subgeometric,1,Boeotian Geometric,6,aa_4608,review: a misspelling or variant spelling of the related value? (many of these will be fine)
+abbreviation,period,Late Clas./Hell.,59,,,aa_6 aa_11 aa_28 aa_48,"spell out (e.g. ""Clas."" as ""Classical"")"
+abbreviation,period,Late Arch./Early Clas.,27,,,aa_430 aa_439 aa_450 aa_451,"spell out (e.g. ""Clas."" as ""Classical"")"
+abbreviation,period,Classical/Late Class.,9,,,aa_474 aa_517 aa_600 aa_644,"spell out (e.g. ""Clas."" as ""Classical"")"
+abbreviation,period,Classical/Late Clas.,8,,,aa_395 aa_396 aa_397 aa_398,"spell out (e.g. ""Clas."" as ""Classical"")"
+abbreviation,period,Geom./Arch./Clas.,1,,,aa_364,"spell out (e.g. ""Clas."" as ""Classical"")"
+several values in one term,ceramic_phase,Protocorinthian/Corinthian,1,,,aa_4624,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Classical/Hellenistic,90,,,aa_1950 aa_2563 aa_2594 aa_2608,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Archaic/Early Classical,57,,,aa_2980 aa_2990 aa_3108 aa_3110,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Classical/Early Hellenistic,22,,,aa_4399 aa_4434 aa_4477 aa_4619,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Archaic/Classical,12,,,aa_35 aa_47 aa_93 aa_135,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Antonine/Severan,12,,,aa_2550 aa_2762 aa_2768 aa_2769,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Hadrianic/Antonine,11,,,aa_2223 aa_2241 aa_2302 aa_2470,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Hellenistic/Roman,5,,,aa_180 aa_256 aa_262 aa_342,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Augustan/Julio-Claudian,4,,,aa_2589 aa_2748 aa_3471 aa_3807,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Trajanic/Hadrianic,3,,,aa_3351 aa_3370 aa_3452,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Roman Imperial/Early Byzantine,2,,,aa_3650 aa_3655,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Julio-Claudian/Flavian,1,,,aa_3371,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Etruscan/Republican,1,,,aa_3665,"keep as one value, or split into separate terms with "";"""
+several values in one term,period,Late Flavian/Trajanic,1,,,aa_3689,"keep as one value, or split into separate terms with "";"""
+several values in one term,style,Late Classical/Hellenistic,26,,,aa_2144 aa_2805 aa_2808 aa_2817,"keep as one value, or split into separate terms with "";"""
+several values in one term,style,Late Hadrianic/Antonine,2,,,aa_3329 aa_3390,"keep as one value, or split into separate terms with "";"""
+several values in one term,style,Trajanic/Hadrianic,2,,,aa_3351 aa_3370,"keep as one value, or split into separate terms with "";"""
+several values in one term,style,Julio-Claudian/Flavian,1,,,aa_3371,"keep as one value, or split into separate terms with "";"""
+several values in one term,style,Late Antonine/Severan,1,,,aa_3340,"keep as one value, or split into separate terms with "";"""
+uncertainty written into the value,context,Ephesus (?),5,Ephesus,13,aa_1172 aa_1173 aa_1174 aa_1183,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Ephesus?,3,Ephesus,13,aa_1033 aa_1034 aa_1049,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Colonia Patricia?,2,,,aa_1081 aa_1082,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Lugdunum?,2,Lugdunum,20,aa_954 aa_1054,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Rome (?),2,Rome,559,aa_1330 aa_1602,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,"Uncertain, (Ephesus?)",2,,,aa_1169 aa_1639,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Andros?,1,,,aa_630,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Antioch?,1,Antioch,18,aa_1279,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Caesaraugusta?,1,,,aa_1075,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Carthage (?),1,Carthage,2,aa_963,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Corfinium (?),1,,,aa_995,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Dodona?,1,Dodona,1,aa_911,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Ephesus ?,1,Ephesus,13,aa_1032,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Lete (?),1,Lete,2,aa_904,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Mycalessus?,1,,,aa_935,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Mylasa (?),1,Mylasa,1,aa_1673,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Narce?,1,Narce,3,aa_4651,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Pergamon (?),1,Pergamon,18,aa_1670,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,context,Phokikon?,1,,,aa_910,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,material,Marble?,29,Marble,1471,aa_2647 aa_2648 aa_2654 aa_2655,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,material,Bronze?,13,Bronze,542,aa_1410 aa_2483 aa_2509 aa_2523,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Votive?,132,Votive,308,aa_1952 aa_1953 aa_1968 aa_2100,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Cult?,47,Cult,38,aa_1870 aa_1872 aa_1876 aa_1911,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Funerary?,34,Funerary,220,aa_1879 aa_1956 aa_1970 aa_2002,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Victory?,30,Victory,10,aa_1873 aa_1908 aa_1913 aa_2067,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Honorary?,20,Honorary,40,aa_2601 aa_2606 aa_2610 aa_2615,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Apotropaic?,3,Apotropaic,4,aa_2887 aa_2966 aa_3186,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Ornament?,3,Ornament,44,aa_3092 aa_3093 aa_3689,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,object_function,Choregic?,1,,,aa_2232,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,period,Roman?,9,Roman,125,aa_2042 aa_2189 aa_2200 aa_2201,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,period,Hadrianic?,3,Hadrianic,79,aa_2235 aa_3436 aa_3458,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,period,Severan?,2,Severan,132,aa_3333 aa_3360,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,period,Flavian-Antonine?,1,,,aa_1200,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,period,Trajanic?,1,Trajanic,49,aa_2243,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Syria (?),3,Syria,37,aa_1278 aa_1279 aa_1332,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Asia?,2,Asia,10,aa_1675 aa_1693,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Ionia?,2,Ionia,94,aa_1049 aa_1169,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,"Uncertain, Asia?",2,,,aa_1311 aa_1672,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Asia Minor?,1,Asia Minor,29,aa_3452,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Eastern Mediterranean?,1,Eastern Mediterranean,22,aa_3468,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Gaul?,1,Gaul,34,aa_954,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Mysia?,1,Mysia,13,aa_1670,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Near East (or Italy?),1,,,aa_3717,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,region,Zeugitania (?),1,Zeugitania,1,aa_963,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,Architectural?,14,Architectural,419,aa_1948 aa_2064 aa_2464 aa_2737,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,"Stele (?), relief-decorated",10,"Stele, relief-decorated",545,aa_2061 aa_2076 aa_2505 aa_3043,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,Furniture?,6,Furniture,9,aa_2855 aa_3092 aa_3093 aa_3321,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,Free-standing statue?,4,Free-standing statue,424,aa_1877 aa_2062 aa_2099 aa_3038,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,Tripod base?,3,Tripod base,1,aa_2586 aa_2587 aa_2588,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,"Statue base (?), relief-decorated",2,"Statue base, relief-decorated",29,aa_3236 aa_3863,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,sculpture_type,"Stele, relief-decorated?",1,"Stele, relief-decorated",545,aa_2770,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,shape,Bell krater (?),1,Bell krater,44,aa_5724,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,shape,Fragment of amphora (?),1,Fragment of amphora,1,aa_4214,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+uncertainty written into the value,style,Severan?,1,Severan,5,aa_3360,"decide on one convention for uncertain values; a ""?"" suffix, "" (?)"" and ""(?)"" inside the term all occur"
+no such column,site,,0,,,,"the site configuration lists this field, but the data has no such column (our side, not Airtable)"
